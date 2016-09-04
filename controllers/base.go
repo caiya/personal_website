@@ -4,10 +4,6 @@ import (
 	"github.com/astaxie/beego"
 )
 
-type MainController struct {
+type BaseController struct {
 	beego.Controller
-}
-
-func (c *MainController) Get() {
-	c.TplName = "index.html"
 }
