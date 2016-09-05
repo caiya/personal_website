@@ -2,6 +2,8 @@ package models
 
 import (
 	"time"
+
+	"github.com/astaxie/beego/orm"
 )
 
 type Article struct {
@@ -20,4 +22,8 @@ type Article struct {
 
 func (article *Article) TableName() string {
 	return "article"
+}
+
+func (article *Article) Query() orm.QuerySeter {
+	return orm.NewOrm().QueryTable(article)
 }

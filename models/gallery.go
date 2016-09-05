@@ -1,5 +1,9 @@
 package models
 
+import (
+	"github.com/astaxie/beego/orm"
+)
+
 type Gallery struct {
 	Id      int    `json:"id"`
 	Title   string `json:"title"`
@@ -9,4 +13,8 @@ type Gallery struct {
 
 func (gallery *Gallery) TableName() string {
 	return "gallery"
+}
+
+func (gallery *Gallery) Query() orm.QuerySeter {
+	return orm.NewOrm().QueryTable(gallery)
 }

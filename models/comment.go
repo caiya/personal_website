@@ -2,6 +2,8 @@ package models
 
 import (
 	"time"
+
+	"github.com/astaxie/beego/orm"
 )
 
 type Comment struct {
@@ -16,4 +18,8 @@ type Comment struct {
 
 func (comment *Comment) TableName() string {
 	return "comment"
+}
+
+func (comment *Comment) Query() orm.QuerySeter {
+	return orm.NewOrm().QueryTable(comment)
 }

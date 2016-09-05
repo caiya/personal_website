@@ -1,5 +1,9 @@
 package models
 
+import (
+	"github.com/astaxie/beego/orm"
+)
+
 type Contact struct {
 	Id      int    `json:"id"`
 	Name    string `json:"name"`
@@ -10,4 +14,8 @@ type Contact struct {
 
 func (contact *Contact) TableName() string {
 	return "contact"
+}
+
+func (contact *Contact) Query() orm.QuerySeter {
+	return orm.NewOrm().QueryTable(contact)
 }

@@ -1,5 +1,9 @@
 package models
 
+import (
+	"github.com/astaxie/beego/orm"
+)
+
 type Articletype struct {
 	Id      int    `json:"id"`
 	Name    string `json:"name"`
@@ -8,4 +12,8 @@ type Articletype struct {
 
 func (articletype *Articletype) TableName() string {
 	return "articletype"
+}
+
+func (articletype *Articletype) Query() orm.QuerySeter {
+	return orm.NewOrm().QueryTable(articletype)
 }
