@@ -1,6 +1,8 @@
 package models
 
 import (
+	"strings"
+
 	"github.com/astaxie/beego/orm"
 )
 
@@ -52,4 +54,14 @@ func (admin *Admin) Read(fields ...string) error {
 		return err
 	}
 	return nil
+}
+
+//分页查询
+func (admin *Admin) GetAdminList(query map[string]string, fields []string, sortby []string, orderby []string, offcet int, limit int) (ml []interface{}, err error) {
+	var ad Admin
+	qs := ad.Query()
+	for k, v := range query {
+		k = strings.Replace(k, ".", "__", -1)
+		qs = qs.Filter(k, v)
+	}
 }
