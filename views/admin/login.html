@@ -160,7 +160,7 @@ function checkForm(){
 <body>
 <DIV class="top_div">
 </DIV>
-<form action="/" method="post" onsubmit="return checkForm()">
+<form action="/admin/login" method="post" onsubmit="return checkForm()">
 	<DIV style="background: rgb(255, 255, 255); margin: -100px auto auto; border: 1px solid rgb(231, 231, 231); border-image: none; width: 400px; height: 200px; text-align: center;">
 		<DIV style="width: 165px; height: 96px; position: absolute;">
 			<DIV class="tou">
@@ -180,17 +180,17 @@ function checkForm(){
 	  	</P>
 		<DIV style="height: 50px; line-height: 50px; margin-top: 30px; border-top-color: rgb(231, 231, 231); border-top-width: 1px; border-top-style: solid;">
 			<P style="margin: 0px 35px 20px 45px;">
-			<SPAN style="float: left;">golang开源博客、相册系统</SPAN> 
+			<SPAN style="float: left;"><a href="http://www.houweiyue.com" target="_target">http://www.houweiyue.com</a></SPAN> 
 			<span><font color="red" id="error">{{.errmsg}}</font></span>
 	        <SPAN style="float: right;"> 
 	              <input type="submit" style="background: rgb(0, 142, 173); padding: 7px 10px; border-radius: 4px; border: 1px solid rgb(26, 117, 152); border-image: none; color: rgb(255, 255, 255); font-weight: bold;" value="登录"/> 
-	         </SPAN>         
+	         </SPAN>
 	         </P>
 	    </DIV>
 	</DIV>
 </form>
 <div style="text-align:center;padding-top: 30px">
-Copyright ©2012-2016 houweiyue
+Copyright ©2016-2017 houweiyue
 </div>
 </body>
 </html>

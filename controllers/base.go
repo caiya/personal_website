@@ -4,6 +4,6 @@ import (
 	"github.com/astaxie/beego"
 )
 
-type BaseController struct {
+type baseHandle struct {
 	beego.Controller
 }
