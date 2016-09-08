@@ -2,6 +2,7 @@ package models
 
 import (
 	"errors"
+	"fmt"
 	"reflect"
 	"strings"
 
@@ -66,7 +67,7 @@ func (admin *Admin) Read(fields ...string) error {
 func (admin *Admin) GetAdminList(query map[string]string, fields []string, sortby []string, order []string, offset int, limit int) (ml []interface{}, err error) {
 	defer func() {
 		if err := recover(); err != nil {
-			return nil, errors.New("查询参数有误")
+			fmt.Println(err)
 		}
 	}()
 	var ad Admin
@@ -105,7 +106,7 @@ func (admin *Admin) GetAdminList(query map[string]string, fields []string, sortb
 			panic(errors.New("查询参数有误"))
 		}
 	} else {
-		if len(orderby) != 0 {
+		if len(order) != 0 {
 			panic(errors.New("查询参数有误"))
 		}
 	}
@@ -119,7 +120,7 @@ func (admin *Admin) GetAdminList(query map[string]string, fields []string, sortb
 		} else { //根据fields字段进行匹配输出
 			var m map[string]interface{}
 			for _, v := range admins {
-				m = make([string]interface{})
+				m = make(map[string]interface{}, 0)
 				val := reflect.ValueOf(v)
 				for _, field := range fields {
 					m[field] = val.FieldByName(field).Interface()
@@ -129,5 +130,5 @@ func (admin *Admin) GetAdminList(query map[string]string, fields []string, sortb
 		}
 		return ml, nil
 	}
-	return ni, err
+	return nil, err
 }

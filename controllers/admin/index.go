@@ -2,6 +2,7 @@ package admin
 
 import (
 	"fmt"
+	"personal_website/models"
 )
 
 type IndexHandle struct {
@@ -13,6 +14,6 @@ func (this *IndexHandle) Index() {
 }
 
 func (this *IndexHandle) Login() {
-	fmt.Println("#############")
+	u := Admin{Name: this.GetString("username"), Pass: this.GetString("password")}
 	this.Ctx.WriteString("欢迎登录成功")
 }

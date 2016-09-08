@@ -2,9 +2,8 @@ package main
 
 import (
 	_ "easyui_crud/models"
-	_ "personal_website/routers"
-
 	"github.com/astaxie/beego"
+	_ "personal_website/routers"
 )
 
 const VERSION = "1.0.0"
