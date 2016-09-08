@@ -2,11 +2,12 @@ package admin
 
 import (
 	"fmt"
+	"personal_website/controllers"
 	"personal_website/models"
 )
 
 type IndexHandle struct {
-	baseHandle
+	controllers.BaseHandle
 }
 
 func (this *IndexHandle) Index() {
@@ -14,6 +15,12 @@ func (this *IndexHandle) Index() {
 }
 
 func (this *IndexHandle) Login() {
-	u := Admin{Name: this.GetString("username"), Pass: this.GetString("password")}
+	username := this.GetString("username")
+	password := this.GetString("password")
+	u := &models.Admin{Name: username}
+	u.Read("Name")
+	if u.Id == 0 {
+
+	}
 	this.Ctx.WriteString("欢迎登录成功")
 }
