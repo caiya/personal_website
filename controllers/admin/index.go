@@ -1,6 +1,7 @@
 package admin
 
 import (
+	"fmt"
 	"personal_website/controllers"
 	"personal_website/models"
 	"personal_website/utils"
@@ -10,10 +11,16 @@ type IndexHandle struct {
 	controllers.BaseHandle
 }
 
+type MainHandle struct {
+	controllers.BaseHandle
+}
+
+//首页跳转
 func (this *IndexHandle) Index() {
 	this.TplName = "admin/login.html"
 }
 
+//登录
 func (this *IndexHandle) Login() {
 	username := this.GetString("userName")
 	password := this.GetString("password")
@@ -32,9 +39,19 @@ func (this *IndexHandle) Login() {
 		this.TplName = "admin/login.html"
 		return
 	}
-	this.Redirect("/admin/main", 302)
+	this.SetSession("currUser", u) //设置session
+	this.Data["currUser"] = u
+	fmt.Printf("%#v", u)
+	this.TplName = "admin/index.html"
 }
 
-func (this *IndexHandle) Main() {
+//退出登录
+func (this *IndexHandle) Exit() {
+	this.DelSession("currUser")
+	this.Redirect("/admin", 302)
+}
+
+//主页跳转
+func (this *MainHandle) Main() {
 	this.TplName = "admin/index.html"
 }

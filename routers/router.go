@@ -7,7 +7,8 @@ import (
 )
 
 func init() {
-	beego.Router("/admin/*", &admin.IndexHandle{}, "GET:Index")
+	beego.Router("/admin", &admin.IndexHandle{}, "GET:Index")
 	beego.Router("/admin/login", &admin.IndexHandle{}, "POST:Login")
-	beego.Router("/admin/main", &admin.IndexHandle{}, "*:Main")
+	beego.Router("/admin/exit", &admin.IndexHandle{}, "GET:Exit")
+	beego.Router("/admin/main", &admin.MainHandle{}, "*:Main")
 }
