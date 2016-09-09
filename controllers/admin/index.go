@@ -36,5 +36,5 @@ func (this *IndexHandle) Login() {
 }
 
 func (this *IndexHandle) Main() {
-	this.Ctx.WriteString("欢迎登录主页")
+	this.TplName = "admin/index.html"
 }
