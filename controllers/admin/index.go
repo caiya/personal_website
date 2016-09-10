@@ -1,7 +1,6 @@
 package admin
 
 import (
-	"fmt"
 	"personal_website/controllers"
 	"personal_website/models"
 	"personal_website/utils"
@@ -41,7 +40,6 @@ func (this *IndexHandle) Login() {
 	}
 	this.SetSession("currUser", u) //设置session
 	this.Data["currUser"] = u
-	fmt.Printf("%#v", u)
 	this.TplName = "admin/index.html"
 }
 
