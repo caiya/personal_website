@@ -5,6 +5,7 @@ import (
 	"personal_website/controllers"
 	"personal_website/models"
 	"personal_website/utils"
+	"strings"
 )
 
 type IndexHandle struct {
@@ -22,8 +23,8 @@ func (this *IndexHandle) Index() {
 
 //登录
 func (this *IndexHandle) Login() {
-	username := this.GetString("userName")
-	password := this.GetString("password")
+	username := strings.TrimSpace(this.GetString("userName"))
+	password := strings.TrimSpace(this.GetString("password"))
 	u := &models.Admin{Name: username}
 	u.Read("name")
 	fmt.Printf("%#v", u)
