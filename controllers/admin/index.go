@@ -1,7 +1,6 @@
 package admin
 
 import (
-	"fmt"
 	"personal_website/controllers"
 	"personal_website/models"
 	"personal_website/utils"
@@ -41,9 +40,7 @@ func (this *IndexHandle) Login() {
 	}
 	u.Pass = ""
 	this.SetSession("currUser", u) //设置session
-	fmt.Printf("%#v", u)
-	this.Data["currUser"] = u
-	this.TplName = "admin/index.html"
+	this.Redirect("/admin/main", 302)
 }
 
 //退出登录
@@ -54,5 +51,11 @@ func (this *IndexHandle) Exit() {
 
 //主页跳转
 func (this *MainHandle) Main() {
-	this.TplName = "admin/index.html"
+	u := this.GetSession("currUser")
+	if u != nil {
+		this.Data["currUser"] = u
+		this.TplName = "admin/index.html"
+	} else {
+		this.Redirect("/admin", 302)
+	}
 }
