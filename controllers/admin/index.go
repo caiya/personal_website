@@ -1,6 +1,7 @@
 package admin
 
 import (
+	"fmt"
 	"personal_website/controllers"
 	"personal_website/models"
 	"personal_website/utils"
@@ -24,7 +25,8 @@ func (this *IndexHandle) Login() {
 	username := this.GetString("userName")
 	password := this.GetString("password")
 	u := &models.Admin{Name: username}
-	u.Read("Name")
+	u.Read("name")
+	fmt.Printf("%#v", u)
 	if u.Id == 0 {
 		this.Data["errmsg"] = "当前用户名不存在"
 		this.Data["username"] = username

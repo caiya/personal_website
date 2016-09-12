@@ -2,7 +2,6 @@ package models
 
 import (
 	"errors"
-	"fmt"
 	"reflect"
 	"strings"
 
@@ -10,13 +9,17 @@ import (
 )
 
 type Admin struct {
-	Id       int    `json:"id"`
-	Name     string `json:"name"`
-	Nickname string `json:"nickname"`
-	Pass     string `json:"pass"`
-	Email    string `json:"email"`
-	Mobile   string `json:"mobile"`
-	Address  string `json:"address"`
+	Id        int    `json:"id"`
+	Name      string `json:"name"`
+	Nickname  string `json:"nickname"`
+	Pass      string `json:"pass"`
+	Email     string `json:"email"`
+	Mobile    string `json:"mobile"`
+	Address   string `json:"address"`
+	Sex       int    `json:"sex"`
+	Age       int    `json:"age"`
+	Addtime   int    `json:"addtime"`
+	Lastlogin int    `json:"lastlogin"`
 }
 
 func (admin *Admin) TableName() string {
@@ -65,11 +68,6 @@ func (admin *Admin) Read(fields ...string) error {
 
 //分页查询
 func (admin *Admin) GetAdminList(query map[string]string, fields []string, sortby []string, order []string, offset int, limit int) (ml []interface{}, err error) {
-	defer func() {
-		if err := recover(); err != nil {
-			fmt.Println(err)
-		}
-	}()
 	var ad Admin
 	qs := ad.Query()
 	for k, v := range query {
@@ -86,7 +84,7 @@ func (admin *Admin) GetAdminList(query map[string]string, fields []string, sortb
 				} else if strings.ToLower(order[i]) == "desc" {
 					orderby = "-" + v
 				} else {
-					panic(errors.New("查询参数有误"))
+					return nil, errors.New("查询参数有误")
 				}
 				sortFields = append(sortFields, orderby)
 			}
@@ -98,16 +96,16 @@ func (admin *Admin) GetAdminList(query map[string]string, fields []string, sortb
 				} else if strings.ToLower(order[i]) == "desc" {
 					orderby = "-" + v
 				} else {
-					panic(errors.New("查询参数有误"))
+					return nil, errors.New("查询参数有误")
 				}
 				sortFields = append(sortFields, orderby)
 			}
 		} else if len(sortby) != len(order) && len(order) != 1 {
-			panic(errors.New("查询参数有误"))
+			return nil, errors.New("查询参数有误")
 		}
 	} else {
 		if len(order) != 0 {
-			panic(errors.New("查询参数有误"))
+			return nil, errors.New("查询参数有误")
 		}
 	}
 	var admins []Admin

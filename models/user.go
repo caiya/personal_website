@@ -16,6 +16,7 @@ type User struct {
 	Pass      string `json:"pass"`
 	Addtime   int    `json:"addtime"`
 	Lastlogin int    `json:"lastlogin"`
+	Lastip    string `json:"lastip"`
 }
 
 func (user *User) TableName() string {

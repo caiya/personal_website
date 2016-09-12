@@ -10,6 +10,7 @@ type Contact struct {
 	Email   string `json:"email"`
 	Mobile  string `json:"mobile"`
 	Message string `json:"message"`
+	Addtime int    `json:"addtime"`
 }
 
 func (contact *Contact) TableName() string {
