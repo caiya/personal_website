@@ -16,10 +16,9 @@ type Admin struct {
 	Email     string `json:"email"`
 	Mobile    string `json:"mobile"`
 	Address   string `json:"address"`
-	Sex       int    `json:"sex"`
-	Age       int    `json:"age"`
 	Addtime   int    `json:"addtime"`
 	Lastlogin int    `json:"lastlogin"`
+	Lastip    string `json:"lastip"`
 }
 
 func (admin *Admin) TableName() string {
