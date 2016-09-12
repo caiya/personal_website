@@ -1,8 +1,6 @@
 package models
 
 import (
-	"crypto/md5"
-	"encoding/hex"
 	"net/url"
 
 	"github.com/astaxie/beego"
@@ -29,12 +27,4 @@ func init() {
 	if beego.AppConfig.String("runmode") == "dev" {
 		orm.Debug = true
 	}
-}
-
-//MD5加密
-func Md5Str(s string) (rs string) {
-	h := md5.New()
-	h.Write([]byte(s))
-	rs = hex.EncodeToString(h.Sum(nil))
-	return
 }

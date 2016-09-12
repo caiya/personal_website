@@ -9,5 +9,6 @@ type SettingHandle struct {
 }
 
 func (this *SettingHandle) Index() {
-
+	this.Layout = "admin/index.html"
+	this.TplName = "admin/system.html"
 }

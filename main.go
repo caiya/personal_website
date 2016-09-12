@@ -12,6 +12,7 @@ import (
 const VERSION = "1.0.0"
 
 func main() {
+
 	beego.AppConfig.Set("version", VERSION)
 	beego.ErrorHandler("404", page_not_found)
 	beego.Run()
