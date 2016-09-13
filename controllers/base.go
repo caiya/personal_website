@@ -17,8 +17,8 @@ func (this *BaseHandle) RspJson(status bool, msg string) {
 //登录校验
 func (this *BaseHandle) Prepare() {
 	u := this.GetSession("currUser")
-	controller, action := this.GetControllerAndAction()
-	if u == nil && controller != "IndexHandle" && (action != "Index" || action != "Login") {
+	controller, _ := this.GetControllerAndAction()
+	if u == nil && controller != "IndexHandle" {
 		this.Redirect("/admin", 302)
 		return
 	}

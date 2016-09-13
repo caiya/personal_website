@@ -8,6 +8,7 @@ type Gallerytype struct {
 	Id      int    `json:"id"`
 	Name    string `json:"name"`
 	Orderno int    `json:"orderno"`
+	Desc    string `json:"desc"`
 }
 
 func (gallerytype *Gallerytype) TableName() string {

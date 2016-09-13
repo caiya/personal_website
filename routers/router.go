@@ -8,15 +8,19 @@ import (
 
 func init() {
 
-	//后台 begin
-
 	//用户登录退出
 	beego.Router("/admin", &admin.IndexHandle{}, "GET:Index")
 	beego.Router("/admin/login", &admin.IndexHandle{}, "POST:Login")
 	beego.Router("/admin/exit", &admin.IndexHandle{}, "GET:Exit")
 	beego.Router("/admin/main", &admin.MainHandle{}, "GET:Main")
 
-	//系统设置
-	beego.Router("/setting", &admin.SettingHandle{}, "GET:Index")
-	beego.Router("/template", &admin.TemplateHandle{}, "GET:Index")
+	//跳转路由
+	beego.Router("/admin/setting", &admin.SettingHandle{}, "GET:Index")
+
+	beego.Router("/admin/template", &admin.TemplateHandle{}, "GET:Index")
+	beego.Router("/admin/template/add", &admin.TemplateHandle{}, "GET:Add")
+
+	beego.Router("/admin/gallerytype", &admin.GallerytypeHandle{}, "GET:Index")
+	beego.Router("/admin/gallerytype/add", &admin.GallerytypeHandle{}, "GET:Add")
+
 }
