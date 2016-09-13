@@ -26,3 +26,8 @@ func (user *User) TableName() string {
 func (user *User) Query() orm.QuerySeter {
 	return orm.NewOrm().QueryTable(user)
 }
+
+//注册模型
+func init() {
+	orm.RegisterModel(new(User))
+}

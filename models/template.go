@@ -18,3 +18,7 @@ func (template *Template) TableName() string {
 func init() {
 	orm.RegisterModel(new(Template))
 }
+
+func (template *Template) Query() orm.QuerySeter {
+	return orm.NewOrm().QueryTable(template)
+}

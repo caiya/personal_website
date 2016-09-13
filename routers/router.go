@@ -26,4 +26,16 @@ func init() {
 	beego.Router("/admin/gallery", &admin.GalleryHandle{}, "GET:Index")
 	beego.Router("/admin/gallery/add", &admin.GalleryHandle{}, "GET:Add")
 
+	beego.Router("/admin/articletype", &admin.ArticletypeHandle{}, "GET:Index")
+	beego.Router("/admin/articletype/add", &admin.ArticletypeHandle{}, "GET:Add")
+
+	beego.Router("/admin/article", &admin.ArticleHandle{}, "GET:Index")
+	beego.Router("/admin/article/add", &admin.ArticleHandle{}, "GET:Add")
+
+	beego.Router("/admin/comment", &admin.CommentHandle{}, "GET:Index")
+
+	beego.Router("/admin/manager", &admin.UseradminHandle{}, "GET:Index")
+	beego.Router("/admin/manager/add", &admin.UseradminHandle{}, "GET:Add")
+
+	beego.Router("/admin/log", &admin.RecordHandle{}, "GET:Index")
 }
