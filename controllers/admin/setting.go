@@ -8,7 +8,8 @@ type SettingHandle struct {
 	controllers.BaseHandle
 }
 
+//设置页
 func (this *SettingHandle) Index() {
-	this.Layout = "admin/index.html"
-	this.TplName = "admin/system.html"
+	this.RspTemp("admin/layout.html", "admin/system.html", "c1")
+	return
 }

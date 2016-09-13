@@ -54,7 +54,7 @@ func (this *IndexHandle) Exit() {
 func (this *MainHandle) Main() {
 	u := this.GetSession("currUser")
 	if u != nil {
-		this.Data["currUser"] = u
+		this.Layout = "admin/layout.html"
 		this.TplName = "admin/index.html"
 	} else {
 		this.Redirect("/admin", 302)

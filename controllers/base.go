@@ -8,6 +8,7 @@ type BaseHandle struct {
 	beego.Controller
 }
 
+//json输出
 func (this *BaseHandle) RspJson(status bool, msg string) {
 	this.Data["json"] = &map[string]interface{}{"succ": status, "msg": msg}
 	this.ServeJSON()
@@ -21,4 +22,14 @@ func (this *BaseHandle) Prepare() {
 		this.Redirect("/admin", 302)
 		return
 	}
+	this.Data["currUser"] = u
+}
+
+//后台模板页输出
+func (this *BaseHandle) RspTemp(layout string, tplname string, class string) {
+	if class != "" {
+		this.Data[class] = "cur"
+	}
+	this.Layout = layout
+	this.TplName = tplname
 }
