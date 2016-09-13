@@ -15,7 +15,7 @@ func (this *ArticletypeHandle) Index() {
 }
 
 //新增页
-func (this *ArticletypeHandle) Add() {
+func (this *ArticletypeHandle) ToAdd() {
 	this.RspTemp("admin/layout.html", "admin/add_article_category.html", "c5")
 	return
 }

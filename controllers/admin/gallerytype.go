@@ -15,7 +15,7 @@ func (this *GallerytypeHandle) Index() {
 }
 
 //新增页
-func (this *GallerytypeHandle) Add() {
+func (this *GallerytypeHandle) ToAdd() {
 	this.RspTemp("admin/layout.html", "admin/add_gallery_category.html", "c3")
 	return
 }

@@ -13,7 +13,7 @@ func (this *TemplateHandle) Index() {
 	return
 }
 
-func (this *TemplateHandle) Add() {
+func (this *TemplateHandle) ToAdd() {
 	this.RspTemp("admin/layout.html", "admin/add_page.html", "c2")
 	return
 }

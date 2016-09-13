@@ -18,24 +18,24 @@ func init() {
 	beego.Router("/admin/setting", &admin.SettingHandle{}, "GET:Index")
 
 	beego.Router("/admin/template", &admin.TemplateHandle{}, "GET:Index")
-	beego.Router("/admin/template/add", &admin.TemplateHandle{}, "GET:Add")
+	beego.Router("/admin/template/add", &admin.TemplateHandle{}, "GET:ToAdd")
 
 	beego.Router("/admin/gallerytype", &admin.GallerytypeHandle{}, "GET:Index")
-	beego.Router("/admin/gallerytype/add", &admin.GallerytypeHandle{}, "GET:Add")
+	beego.Router("/admin/gallerytype/add", &admin.GallerytypeHandle{}, "GET:ToAdd")
 
 	beego.Router("/admin/gallery", &admin.GalleryHandle{}, "GET:Index")
-	beego.Router("/admin/gallery/add", &admin.GalleryHandle{}, "GET:Add")
+	beego.Router("/admin/gallery/add", &admin.GalleryHandle{}, "GET:ToAdd")
 
 	beego.Router("/admin/articletype", &admin.ArticletypeHandle{}, "GET:Index")
-	beego.Router("/admin/articletype/add", &admin.ArticletypeHandle{}, "GET:Add")
+	beego.Router("/admin/articletype/add", &admin.ArticletypeHandle{}, "GET:ToAdd")
 
 	beego.Router("/admin/article", &admin.ArticleHandle{}, "GET:Index")
-	beego.Router("/admin/article/add", &admin.ArticleHandle{}, "GET:Add")
+	beego.Router("/admin/article/add", &admin.ArticleHandle{}, "GET:ToAdd")
 
 	beego.Router("/admin/comment", &admin.CommentHandle{}, "GET:Index")
 
-	beego.Router("/admin/manager", &admin.UseradminHandle{}, "GET:Index")
-	beego.Router("/admin/manager/add", &admin.UseradminHandle{}, "GET:Add")
+	beego.Router("/admin/manager", &admin.ManagerHandle{}, "GET:Index")
+	beego.Router("/admin/manager/add", &admin.ManagerHandle{}, "GET:ToAdd")
 
 	beego.Router("/admin/log", &admin.RecordHandle{}, "GET:Index")
 }
