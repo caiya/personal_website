@@ -14,6 +14,6 @@ func (this *TemplateHandle) Index() {
 }
 
 func (this *TemplateHandle) Add() {
-	this.RspTemp("admin/layout.html", "admin/addpage.html", "c2")
+	this.RspTemp("admin/layout.html", "admin/add_page.html", "c2")
 	return
 }

@@ -23,4 +23,7 @@ func init() {
 	beego.Router("/admin/gallerytype", &admin.GallerytypeHandle{}, "GET:Index")
 	beego.Router("/admin/gallerytype/add", &admin.GallerytypeHandle{}, "GET:Add")
 
+	beego.Router("/admin/gallery", &admin.GalleryHandle{}, "GET:Index")
+	beego.Router("/admin/gallery/add", &admin.GalleryHandle{}, "GET:Add")
+
 }
