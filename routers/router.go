@@ -14,8 +14,9 @@ func init() {
 	beego.Router("/admin", &admin.IndexHandle{}, "GET:Index")
 	beego.Router("/admin/login", &admin.IndexHandle{}, "POST:Login")
 	beego.Router("/admin/exit", &admin.IndexHandle{}, "GET:Exit")
-	beego.Router("/admin/main", &admin.MainHandle{}, "*:Main")
+	beego.Router("/admin/main", &admin.MainHandle{}, "GET:Main")
 
 	//系统设置
-	beego.Router("/setting", &admin.SettingHandle{}, "*:Index")
+	beego.Router("/setting", &admin.SettingHandle{}, "GET:Index")
+	beego.Router("/template", &admin.TemplateHandle{}, "GET:Index")
 }
