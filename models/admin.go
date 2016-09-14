@@ -66,7 +66,11 @@ func (admin *Admin) Read(fields ...string) error {
 }
 
 //分页查询
-func (admin *Admin) GetAdminList(query map[string]string, fields []string, sortby []string, order []string, offset int, limit int) (ml []interface{}, err error) {
+func (admin *Admin) GetAdminList(query map[string]string, fields []string, sortby []string, order []string, page int, pageSize int) (ml []interface{}, count int, err error) {
+	offset := 0
+	if page > 1 {
+		offset = (page - 1) * pageSize
+	}
 	var ad Admin
 	qs := ad.Query()
 	for k, v := range query {
@@ -83,7 +87,7 @@ func (admin *Admin) GetAdminList(query map[string]string, fields []string, sortb
 				} else if strings.ToLower(order[i]) == "desc" {
 					orderby = "-" + v
 				} else {
-					return nil, errors.New("查询参数有误")
+					return nil, 0, errors.New("查询参数有误")
 				}
 				sortFields = append(sortFields, orderby)
 			}
@@ -95,21 +99,21 @@ func (admin *Admin) GetAdminList(query map[string]string, fields []string, sortb
 				} else if strings.ToLower(order[i]) == "desc" {
 					orderby = "-" + v
 				} else {
-					return nil, errors.New("查询参数有误")
+					return nil, 0, errors.New("查询参数有误")
 				}
 				sortFields = append(sortFields, orderby)
 			}
 		} else if len(sortby) != len(order) && len(order) != 1 {
-			return nil, errors.New("查询参数有误")
+			return nil, 0, errors.New("查询参数有误")
 		}
 	} else {
 		if len(order) != 0 {
-			return nil, errors.New("查询参数有误")
+			return nil, 0, errors.New("查询参数有误")
 		}
 	}
 	var admins []Admin
 	qs = qs.OrderBy(sortFields...)
-	if _, err := qs.Limit(limit, offset).All(&admins, fields...); err == nil { //成功
+	if _, err := qs.Limit(pageSize, offset).All(&admins, fields...); err == nil { //成功
 		if len(fields) == 0 { //查询全部字段
 			for _, v := range admins {
 				ml = append(ml, v)
@@ -125,7 +129,7 @@ func (admin *Admin) GetAdminList(query map[string]string, fields []string, sortb
 				ml = append(ml, m)
 			}
 		}
-		return ml, nil
+		return ml, len(ml), nil
 	}
-	return nil, err
+	return nil, 0, err
 }

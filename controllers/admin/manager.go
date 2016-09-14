@@ -1,7 +1,9 @@
 package admin
 
 import (
+	"fmt"
 	"personal_website/controllers"
+	"personal_website/models"
 )
 
 type ManagerHandle struct {
@@ -23,4 +25,21 @@ func (this *ManagerHandle) ToAdd() {
 //修改页
 func (this *ManagerHandle) Update() {
 
+}
+
+//分页查询
+func (this *ManagerHandle) GetList() {
+	admin := &models.Admin{}
+	admins, count, err := admin.GetAdminList(nil, nil, nil, nil, 0, 1)
+
+	rsp := make(map[string]interface{})
+
+	if err == nil {
+		rsp["datas"] = admins
+		rsp["count"] = count
+		this.Data["json"] = rsp
+		this.ServeJSON()
+	} else {
+		fmt.Println("报错了。。。。")
+	}
 }

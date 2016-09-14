@@ -16,13 +16,13 @@ func (this *BaseHandle) RspJson(status bool, msg string) {
 
 //登录校验
 func (this *BaseHandle) Prepare() {
-	u := this.GetSession("currUser")
-	controller, _ := this.GetControllerAndAction()
-	if u == nil && controller != "IndexHandle" {
-		this.Redirect("/admin", 302)
-		return
-	}
-	this.Data["currUser"] = u
+	//	u := this.GetSession("currUser")
+	//	controller, _ := this.GetControllerAndAction()
+	//	if u == nil && controller != "IndexHandle" {
+	//		this.Redirect("/admin", 302)
+	//		return
+	//	}
+	//	this.Data["currUser"] = u
 }
 
 //后台模板页输出
