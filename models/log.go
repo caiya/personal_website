@@ -12,9 +12,9 @@ import (
 type Record struct {
 	Id     int    `json:"id"`
 	Optime int    `json:"optime"`
-	Opid   int    `json:"opid"`
 	Opname string `json:"opname"`
 	Record string `json:"record"`
+	Ipaddr string `json:"ipaddr"`
 }
 
 func (record *Record) TableName() string {
@@ -63,7 +63,11 @@ func (record *Record) Read(fields ...string) error {
 }
 
 //分页查询
-func (record *Record) GetAdminList(query map[string]string, fields []string, sortby []string, order []string, offset int, limit int) (ml []interface{}, count int, err error) {
+func (record *Record) GetList(query map[string]string, fields []string, sortby []string, order []string, page int64, pageSize int64) (ml []interface{}, count int64, err error) {
+	var offset int64
+	if page > 1 {
+		offset = (page - 1) * pageSize
+	}
 	var ad Record
 	qs := ad.Query()
 	for k, v := range query {
@@ -105,8 +109,9 @@ func (record *Record) GetAdminList(query map[string]string, fields []string, sor
 		}
 	}
 	var records []Record
+	//将切片打散传入
 	qs = qs.OrderBy(sortFields...)
-	if _, err := qs.Limit(limit, offset).All(&records, fields...); err == nil { //成功
+	if _, err := qs.Limit(pageSize, offset).All(&records, fields...); err == nil { //成功
 		if len(fields) == 0 { //查询全部字段
 			for _, v := range records {
 				ml = append(ml, v)
@@ -122,7 +127,8 @@ func (record *Record) GetAdminList(query map[string]string, fields []string, sor
 				ml = append(ml, m)
 			}
 		}
-		return ml, len(ml), nil
+		count, _ := qs.Count()
+		return ml, count, nil
 	}
 	return nil, 0, err
 }

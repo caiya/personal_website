@@ -30,7 +30,7 @@ func (this *ManagerHandle) Update() {
 //分页查询
 func (this *ManagerHandle) GetList() {
 	admin := &models.Admin{}
-	admins, count, err := admin.GetAdminList(nil, nil, nil, nil, 0, 1)
+	admins, count, err := admin.GetList(nil, nil, nil, nil, 2, 2)
 
 	rsp := make(map[string]interface{})
 

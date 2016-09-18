@@ -39,7 +39,7 @@ func init() {
 	beego.Router("/admin/manager/add", &admin.ManagerHandle{}, "GET:ToAdd")
 	beego.Router("/admin/manager/list", &admin.ManagerHandle{}, "POST:GetList")
 
-	beego.Router("/admin/log", &admin.RecordHandle{}, "GET:Index")
+	beego.Router("/admin/log/?:page", &admin.RecordHandle{}, "*:Index")
 
 	beego.Router("/admin/link", &admin.LinkHandle{}, "GET:Index")
 	beego.Router("/admin/link/add", &admin.LinkHandle{}, "GET:ToAdd")

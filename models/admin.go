@@ -66,8 +66,8 @@ func (admin *Admin) Read(fields ...string) error {
 }
 
 //分页查询
-func (admin *Admin) GetAdminList(query map[string]string, fields []string, sortby []string, order []string, page int, pageSize int) (ml []interface{}, count int, err error) {
-	offset := 0
+func (admin *Admin) GetList(query map[string]string, fields []string, sortby []string, order []string, page int64, pageSize int64) (ml []interface{}, count int64, err error) {
+	var offset int64
 	if page > 1 {
 		offset = (page - 1) * pageSize
 	}
@@ -129,7 +129,8 @@ func (admin *Admin) GetAdminList(query map[string]string, fields []string, sortb
 				ml = append(ml, m)
 			}
 		}
-		return ml, len(ml), nil
+		count, _ := qs.Count()
+		return ml, count, nil
 	}
 	return nil, 0, err
 }

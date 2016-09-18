@@ -6,6 +6,8 @@ import (
 	"net/http"
 	_ "personal_website/routers"
 
+	_ "personal_website/utils"
+
 	"github.com/astaxie/beego"
 )
 
