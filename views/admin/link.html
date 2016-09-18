@@ -4,14 +4,11 @@
         <h3><a href="/admin/link/add" class="actionBtn add">添加链接</a>链接列表</h3>
     <div class="filter">
     <form action="/admin/link" method="post">
-     编号：<input name="s_id" type="text" class="inpMain" value="" size="20" />
-     链接名称：<input name="s_name" type="text" class="inpMain" value="" size="20" />
-     链接地址：<input name="s_url" type="text" class="inpMain" value="" size="20" />
-     <input name="submit" class="btnGray" type="submit" value="筛选" />
+     编号：<input name="id"  type="text" class="inpMain" value="{{.id}}" size="20" />
+     链接名称：<input name="name" type="text" class="inpMain" value="{{.name}}" size="20" />
+     链接地址：<input name="url" type="text" class="inpMain" value="{{.url}}" size="20" />
+     <input name="submit" class="btnGray" type="submit" id="search" value="筛选" />
     </form>
-    <span>
-<!--        <a class="btnGray" href="article.php?rec=sort">开始筛选首页文章</a>-->
-        </span>
     </div>
         <div id="list">
     <form name="action" method="post" action="article.php?rec=action">
@@ -71,7 +68,7 @@
 	jQuery("#doAction").click(function(){
 		del();
 	});
-	
+
  }
 	function del(){
 		if(jQuery("#operate").val() == "del_all"){		//如果单击“删除”
@@ -93,6 +90,10 @@
 		});
 		}
 	 }
+	}
+	
+	function search(){
+		var s_id = jQuery("#s_id").val().trim();
 	}
 
  </script>

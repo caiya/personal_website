@@ -15,13 +15,30 @@ type LinkHandle struct {
 
 //链接首页
 func (this *LinkHandle) Index() {
+
+	id := this.GetString("id")
+	name := this.GetString("name")
+	url := this.GetString("url")
+
+	query := make(map[string]string, 0)
+
+	if id != "" {
+		query["id"] = id
+	}
+	if name != "" {
+		query["name.contains"] = name
+	}
+	if url != "" {
+		query["url.contains"] = url
+	}
+
 	page, _ := strconv.Atoi(this.Ctx.Input.Param(":page"))
 	if page == 0 {
 		page = 1
 	}
 	link := &models.Link{}
 
-	records, count, err := link.GetList(nil, nil, []string{"id"}, []string{"desc"}, int64(page), PAGESIZE)
+	records, count, err := link.GetList(query, nil, []string{"id"}, []string{"desc"}, int64(page), PAGESIZE)
 	if err == nil {
 		this.Data["datas"] = records //记录数
 		this.Data["count"] = count   //总记录数
@@ -35,6 +52,11 @@ func (this *LinkHandle) Index() {
 	} else {
 		pageCount = count/PAGESIZE + 1
 	}
+
+	//数据回显
+	this.Data["id"] = id
+	this.Data["name"] = name
+	this.Data["url"] = url
 	this.Data["pageCount"] = pageCount //总页数
 	this.Data["page"] = page           //当前页
 	this.RspTemp("admin/layout.html", "admin/link.html", "c10")
