@@ -1,6 +1,7 @@
 package admin
 
 import (
+	"fmt"
 	"personal_website/controllers"
 	"personal_website/models"
 	"strconv"
@@ -19,7 +20,8 @@ func (this *LinkHandle) Index() {
 		page = 1
 	}
 	link := &models.Link{}
-	records, count, err := link.GetList(nil, nil, nil, nil, int64(page), PAGESIZE)
+
+	records, count, err := link.GetList(nil, nil, []string{"id"}, []string{"desc"}, int64(page), PAGESIZE)
 	if err == nil {
 		this.Data["datas"] = records //记录数
 		this.Data["count"] = count   //总记录数
@@ -62,4 +64,16 @@ func (this *LinkHandle) Del() {
 		return
 	}
 	this.RspJson(true, "删除成功")
+}
+
+//新增链接
+func (this *LinkHandle) Add() {
+	fmt.Println("请求过来了.............")
+	link := models.Link{}
+	if err := this.ParseForm(&link); err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+	link.Insert()
+	this.Redirect("/admin/link", 302)
 }

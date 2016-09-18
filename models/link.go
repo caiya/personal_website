@@ -11,10 +11,10 @@ import (
 )
 
 type Link struct {
-	Id      int    `json:"id"`
-	Name    string `json:"name"`
-	Url     string `json:"url"`
-	Orderno int    `json:"orderno"`
+	Id      int    `json:"id" form:"-"`
+	Name    string `json:"name" form:"name"`
+	Url     string `json:"url" form:"url"`
+	Orderno int    `json:"orderno" form:"orderno"`
 }
 
 func (link *Link) TableName() string {
