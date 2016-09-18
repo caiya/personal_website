@@ -13,13 +13,12 @@
 	{{range .datas}}
 		<tr>
       <td align="center">{{.Id}}</td>
-      <td>{{.Optime}}</td>
+      <td>{{FormatTimeStamp .Optime "2006-01-02 15:04:05"}}</td>
       <td align="center">{{.Opname}}</td>
       <td align="left">{{.Record}}</td>
       <td align="center">{{.Ipaddr}}</td>
      </tr>
 	{{end}}
-          
          </table>
     <div class="pager">总计 {{.count}} 个记录，共 {{.pageCount}} 页，当前第 {{.page}} 页 | {{if ne .page 1}}<a href="/admin/log/1">第一页</a>{{else}}第一页{{end}} {{if ne .page 1}}<a href="/admin/log/{{Down .page 1}}">上一页</a>{{else}}上一页{{end}} {{if ne .page .pageCount}}<a href="/admin/log/{{Up .page 1}}">下一页</a>{{else}}下一页{{end}} {{if ne .page .pageCount}}<a href="/admin/log/{{.pageCount}}">最末页</a>{{else}}最末页{{end}}</div>           </div>
  </div>
