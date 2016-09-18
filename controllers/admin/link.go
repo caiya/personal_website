@@ -90,7 +90,6 @@ func (this *LinkHandle) Del() {
 
 //新增链接
 func (this *LinkHandle) Add() {
-	fmt.Println("请求过来了.............")
 	link := models.Link{}
 	if err := this.ParseForm(&link); err != nil {
 		fmt.Println(err.Error())
@@ -98,4 +97,18 @@ func (this *LinkHandle) Add() {
 	}
 	link.Insert()
 	this.Redirect("/admin/link", 302)
+}
+
+//修改页面跳转
+func (this *LinkHandle) ToUpdate() {
+	id, _ := strconv.Atoi(this.Ctx.Input.Param(":id"))
+	link := &models.Link{Id: id}
+	link.Read()
+	this.Data["link"] = link
+	this.RspTemp("admin/layout.html", "admin/add_link.html", "c10")
+}
+
+//修改
+func (this *LinkHandle) Update() {
+
 }

@@ -56,6 +56,6 @@ func init() {
 	beego.Router("/admin/link/add", &admin.LinkHandle{}, "GET:ToAdd")
 	beego.Router("/admin/link/add", &admin.LinkHandle{}, "POST:Add")
 	beego.Router("/admin/link/update/?:id", &admin.LinkHandle{}, "GET:ToUpdate")
-	beego.Router("/admin/link/update/?:id", &admin.LinkHandle{}, "POST:Update")
+	beego.Router("/admin/link/update", &admin.LinkHandle{}, "POST:Update")
 
 }
