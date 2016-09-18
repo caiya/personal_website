@@ -1,19 +1,16 @@
  <div id="dcMain">
    <!-- 当前位置 -->
-<div id="urHere">DouPHP 管理中心<b>></b><strong>友情链接列表</strong> </div>   <div class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
+<div id="urHere">博客 管理中心<b>></b><strong>友情链接列表</strong> </div>   <div class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
         <h3><a href="/admin/link/add" class="actionBtn add">添加链接</a>链接列表</h3>
     <div class="filter">
-    <form action="article.php" method="post">
-     <select name="cat_id">
-      <option value="0">未分类</option>
-                  <option value="1"> 公司动态</option>
-                        <option value="2"> 行业新闻</option>
-                 </select>
-     <input name="keyword" type="text" class="inpMain" value="" size="20" />
+    <form action="/admin/link" method="post">
+     编号：<input name="s_id" type="text" class="inpMain" value="" size="20" />
+     链接名称：<input name="s_name" type="text" class="inpMain" value="" size="20" />
+     链接地址：<input name="s_url" type="text" class="inpMain" value="" size="20" />
      <input name="submit" class="btnGray" type="submit" value="筛选" />
     </form>
     <span>
-        <a class="btnGray" href="article.php?rec=sort">开始筛选首页文章</a>
+<!--        <a class="btnGray" href="article.php?rec=sort">开始筛选首页文章</a>-->
         </span>
     </div>
         <div id="list">
@@ -22,129 +19,40 @@
      <tr>
       <th width="22" align="center"><input name='chkall' type='checkbox' id='chkall' onclick='selectcheckbox(this.form)' value='check'></th>
       <th width="40" align="center">编号</th>
-      <th align="left">文章名称</th>
-      <th width="150" align="center">文章分类</th>
-      <th width="80" align="center">添加日期</th>
+      <th align="left">链接名称</th>
+      <th width="150" align="center">链接地址</th>
+      <th width="80" align="center">显示顺序</th>
       <th width="80" align="center">操作</th>
      </tr>
           <tr>
-      <td align="center"><input type="checkbox" name="checkbox[]" value="10" /></td>
-      <td align="center">10</td>
-      <td><a href="article.php?rec=edit&id=10">移动互联网产品设计的核心要素有哪些？</a></td>
-      <td align="center"><a href="article.php?cat_id=1">公司动态</a></td>
-      <td align="center">2013-06-26</td>
+		{{range .datas}}
+      <td align="center"><input type="checkbox" name="checkbox" value="{{.Id}}" /></td>
+      <td align="center">{{.Id}}</td>
+      <td>{{.Name}}</td>
+      <td align="center"><a href="{{.Url}}" target="_blank">{{.Url}}</a></td>
+      <td align="center">{{.Orderno}}</td>
       <td align="center">
-              <a href="article.php?rec=edit&id=10">编辑</a> | <a href="article.php?rec=del&id=10">删除</a>
-             </td>
+              <a href="/admin/link/update/{{.Id}}">编辑</a> | <a href="/admin/link/delete/{{.Id}}">删除</a>
+      </td>
      </tr>
-          <tr>
-      <td align="center"><input type="checkbox" name="checkbox[]" value="9" /></td>
-      <td align="center">9</td>
-      <td><a href="article.php?rec=edit&id=9">详解如何利用RSS进行网络推广</a></td>
-      <td align="center"><a href="article.php?cat_id=2">行业新闻</a></td>
-      <td align="center">2013-06-26</td>
-      <td align="center">
-              <a href="article.php?rec=edit&id=9">编辑</a> | <a href="article.php?rec=del&id=9">删除</a>
-             </td>
-     </tr>
-          <tr>
-      <td align="center"><input type="checkbox" name="checkbox[]" value="8" /></td>
-      <td align="center">8</td>
-      <td><a href="article.php?rec=edit&id=8">企业网站文章标题该如何去撰写</a></td>
-      <td align="center"><a href="article.php?cat_id=2">行业新闻</a></td>
-      <td align="center">2013-06-26</td>
-      <td align="center">
-              <a href="article.php?rec=edit&id=8">编辑</a> | <a href="article.php?rec=del&id=8">删除</a>
-             </td>
-     </tr>
-          <tr>
-      <td align="center"><input type="checkbox" name="checkbox[]" value="7" /></td>
-      <td align="center">7</td>
-      <td><a href="article.php?rec=edit&id=7">移动互联网发展下的企业网变革</a></td>
-      <td align="center"><a href="article.php?cat_id=2">行业新闻</a></td>
-      <td align="center">2013-06-26</td>
-      <td align="center">
-              <a href="article.php?rec=edit&id=7">编辑</a> | <a href="article.php?rec=del&id=7">删除</a>
-             </td>
-     </tr>
-          <tr>
-      <td align="center"><input type="checkbox" name="checkbox[]" value="6" /></td>
-      <td align="center">6</td>
-      <td><a href="article.php?rec=edit&id=6">新手如何选购虚拟主机</a></td>
-      <td align="center"><a href="article.php?cat_id=1">公司动态</a></td>
-      <td align="center">2013-06-26</td>
-      <td align="center">
-              <a href="article.php?rec=edit&id=6">编辑</a> | <a href="article.php?rec=del&id=6">删除</a>
-             </td>
-     </tr>
-          <tr>
-      <td align="center"><input type="checkbox" name="checkbox[]" value="5" /></td>
-      <td align="center">5</td>
-      <td><a href="article.php?rec=edit&id=5">网站建设要素之如何制定一份网站策划方案</a></td>
-      <td align="center"><a href="article.php?cat_id=1">公司动态</a></td>
-      <td align="center">2013-06-26</td>
-      <td align="center">
-              <a href="article.php?rec=edit&id=5">编辑</a> | <a href="article.php?rec=del&id=5">删除</a>
-             </td>
-     </tr>
-          <tr>
-      <td align="center"><input type="checkbox" name="checkbox[]" value="4" /></td>
-      <td align="center">4</td>
-      <td><a href="article.php?rec=edit&id=4">一个新手要如何着手来做好网站运营？</a></td>
-      <td align="center"><a href="article.php?cat_id=1">公司动态</a></td>
-      <td align="center">2013-06-26</td>
-      <td align="center">
-              <a href="article.php?rec=edit&id=4">编辑</a> | <a href="article.php?rec=del&id=4">删除</a>
-             </td>
-     </tr>
-          <tr>
-      <td align="center"><input type="checkbox" name="checkbox[]" value="3" /></td>
-      <td align="center">3</td>
-      <td><a href="article.php?rec=edit&id=3">网络营销之该如何打造吸引性的软文营销</a></td>
-      <td align="center"><a href="article.php?cat_id=1">公司动态</a></td>
-      <td align="center">2013-06-26</td>
-      <td align="center">
-              <a href="article.php?rec=edit&id=3">编辑</a> | <a href="article.php?rec=del&id=3">删除</a>
-             </td>
-     </tr>
-          <tr>
-      <td align="center"><input type="checkbox" name="checkbox[]" value="2" /></td>
-      <td align="center">2</td>
-      <td><a href="article.php?rec=edit&id=2">如何利用电子商务提升企业竞争力</a></td>
-      <td align="center"><a href="article.php?cat_id=1">公司动态</a></td>
-      <td align="center">2013-06-26</td>
-      <td align="center">
-              <a href="article.php?rec=edit&id=2">编辑</a> | <a href="article.php?rec=del&id=2">删除</a>
-             </td>
-     </tr>
-          <tr>
-      <td align="center"><input type="checkbox" name="checkbox[]" value="1" /></td>
-      <td align="center">1</td>
-      <td><a href="article.php?rec=edit&id=1">企业网站建设的重要性</a></td>
-      <td align="center"><a href="article.php?cat_id=1">公司动态</a></td>
-      <td align="center">2013-06-26</td>
-      <td align="center">
-              <a href="article.php?rec=edit&id=1">编辑</a> | <a href="article.php?rec=del&id=1">删除</a>
-             </td>
-     </tr>
+	{{end}}
          </table>
     <div class="action">
-     <select name="action" onchange="douAction()">
+     <select name="action" onchange="douAction()" id="operate">
       <option value="0">请选择...</option>
       <option value="del_all">删除</option>
-      <option value="category_move">移动分类至</option>
      </select>
      <select name="new_cat_id" style="display:none">
       <option value="0">未分类</option>
                   <option value="1"> 公司动态</option>
                         <option value="2"> 行业新闻</option>
                  </select>
-     <input name="submit" class="btn" type="submit" value="执行" />
+     <input name="submit" class="btn" type="button" value="执行" id="doAction"/>
     </div>
     </form>
     </div>
     <div class="clear"></div>
-    <div class="pager">总计 10 个记录，共 1 页，当前第 1 页 | <a href="article.php?page=1">第一页</a> 上一页 下一页 <a href="article.php?page=1">最末页</a></div>           </div>
+    <div class="pager">总计 {{.count}} 个记录，共 {{.pageCount}} 页，当前第 {{.page}} 页 | {{if ne .page 1}}<a href="/admin/link/1">第一页</a>{{else}}第一页{{end}} {{if ne .page 1}}<a href="/admin/link/{{Down .page 1}}">上一页</a>{{else}}上一页{{end}} {{if ne .page .pageCount}}<a href="/admin/link/{{Up .page 1}}">下一页</a>{{else}}下一页{{end}} {{if ne .page .pageCount}}<a href="/admin/link/{{.pageCount}}">最末页</a>{{else}}最末页{{end}}</div>           </div>
  </div>
  <div class="clear"></div>
  <script type="text/javascript">
@@ -159,8 +67,34 @@
      var frm = document.forms['action'];
 
      frm.elements['new_cat_id'].style.display = frm.elements['action'].value == 'category_move' ? '' : 'none';
+	
+	jQuery("#doAction").click(function(){
+		del();
+	});
+	
  }
- 
+	function del(){
+		if(jQuery("#operate").val() == "del_all"){		//如果单击“删除”
+		var str = [];
+        jQuery("input[type='checkbox']:checked").each(function(){
+			str.push(jQuery(this).val());
+		});
+		if(!str.length){
+			alert("请先选择您要删除的数据");
+			return;
+		}
+		if(confirm("您确定要删除吗？")){
+			jQuery.post("/admin/link/delete",{ids:str.join(",")},function(result){
+			if(result.succ){
+				window.location.href = "/admin/link";
+			}else{
+				alert(result.msg);
+			}
+		});
+		}
+	 }
+	}
+
  </script>
 </body>
 </html>

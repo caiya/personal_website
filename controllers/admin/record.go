@@ -6,8 +6,6 @@ import (
 	"strconv"
 )
 
-const PAGESIZE int64 = 10
-
 type RecordHandle struct {
 	controllers.BaseHandle
 }
@@ -19,7 +17,11 @@ func (this *RecordHandle) Index() {
 		page = 1
 	}
 	record := &models.Record{}
-	records, count, err := record.GetList(nil, nil, nil, nil, int64(page), PAGESIZE)
+
+	sortby := []string{"id", "optime"} //id、optime逆序
+	order := []string{"desc", "desc"}
+
+	records, count, err := record.GetList(nil, nil, sortby, order, int64(page), PAGESIZE)
 	if err == nil {
 		this.Data["datas"] = records //记录数
 		this.Data["count"] = count   //总记录数

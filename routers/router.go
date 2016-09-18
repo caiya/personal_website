@@ -41,6 +41,9 @@ func init() {
 
 	beego.Router("/admin/log/?:page", &admin.RecordHandle{}, "*:Index")
 
-	beego.Router("/admin/link", &admin.LinkHandle{}, "GET:Index")
+	beego.Router("/admin/link/delete/?:id", &admin.LinkHandle{}, "GET:Delete")
+	beego.Router("/admin/link/delete", &admin.LinkHandle{}, "POST:Del")
+	beego.Router("/admin/link/?:page", &admin.LinkHandle{}, "*:Index")
 	beego.Router("/admin/link/add", &admin.LinkHandle{}, "GET:ToAdd")
+
 }
