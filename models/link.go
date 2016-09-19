@@ -11,7 +11,7 @@ import (
 )
 
 type Link struct {
-	Id      int    `json:"id" form:"-"`
+	Id      int    `json:"id" form:"id"`
 	Name    string `json:"name" form:"name"`
 	Url     string `json:"url" form:"url"`
 	Orderno int    `json:"orderno" form:"orderno"`

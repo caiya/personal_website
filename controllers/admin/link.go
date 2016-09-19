@@ -95,7 +95,12 @@ func (this *LinkHandle) Add() {
 		fmt.Println(err.Error())
 		return
 	}
-	link.Insert()
+	fmt.Printf("%#v", link)
+	if link.Id == 0 { //新增
+		link.Insert()
+	} else { //修改
+		link.Update()
+	}
 	this.Redirect("/admin/link", 302)
 }
 
@@ -106,9 +111,4 @@ func (this *LinkHandle) ToUpdate() {
 	link.Read()
 	this.Data["link"] = link
 	this.RspTemp("admin/layout.html", "admin/add_link.html", "c10")
-}
-
-//修改
-func (this *LinkHandle) Update() {
-
 }
