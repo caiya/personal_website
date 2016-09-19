@@ -101,3 +101,11 @@ func (this *ManagerHandle) Add() {
 	//成功后直接重定向
 	this.Redirect("/admin/manager", 302)
 }
+
+//删除
+func (this *ManagerHandle) Delete() {
+	id, _ := strconv.Atoi(this.Ctx.Input.Param(":id"))
+	admin := &models.Admin{Id: id}
+	admin.Delete()
+	this.Redirect("/admin/manager", 302)
+}

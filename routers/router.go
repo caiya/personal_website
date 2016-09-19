@@ -45,13 +45,14 @@ func init() {
 	beego.Router("/admin/manager/update/?:id", &admin.ManagerHandle{}, "GET:ToUpdate")
 	beego.Router("/admin/manager/add", &admin.ManagerHandle{}, "GET:ToAdd")
 	beego.Router("/admin/manager/add", &admin.ManagerHandle{}, "POST:Add")
+	beego.Router("/admin/manager/delete/?:id", &admin.ManagerHandle{}, "GET:Delete")
 
 	//日志模块
 	beego.Router("/admin/log/?:page", &admin.RecordHandle{}, "*:Index")
 
 	//链接模块
-	beego.Router("/admin/link/delete/?:id", &admin.LinkHandle{}, "GET:Delete")
-	beego.Router("/admin/link/delete", &admin.LinkHandle{}, "POST:Del")
+	beego.Router("/admin/link/delete/?:id", &admin.LinkHandle{}, "GET:Delete") //单个删除
+	beego.Router("/admin/link/delete", &admin.LinkHandle{}, "POST:Del")        //批量删除
 	beego.Router("/admin/link/?:page", &admin.LinkHandle{}, "*:Index")
 	beego.Router("/admin/link/add", &admin.LinkHandle{}, "GET:ToAdd")
 	beego.Router("/admin/link/add", &admin.LinkHandle{}, "POST:Add")
