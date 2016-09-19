@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/astaxie/beego"
@@ -30,6 +31,8 @@ func (this *BaseHandle) Prepare() {
 		val := cfg.Section("whitecontroller").Key("controller").String()
 		CONFIG = strings.Split(val, ",")
 	}
+
+	fmt.Println(controller)
 
 	if u == nil { //如果用户未登录并且访问非白名单
 		for _, val := range CONFIG {
