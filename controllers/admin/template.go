@@ -1,7 +1,6 @@
 package admin
 
 import (
-	"fmt"
 	"personal_website/controllers"
 	"personal_website/models"
 )

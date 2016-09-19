@@ -1,15 +1,14 @@
  <div id="dcMain">
    <!-- 当前位置 -->
-<div id="urHere">DouPHP 管理中心<b>></b><strong>单页面列表</strong> </div>   
+<div id="urHere">博客 管理中心<b>></b><strong>单页面列表</strong> </div>   
 <div class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
     <h3><a href="/admin/template/add" class="actionBtn">添加单页面</a>单页面列表</h3>
         <div class="page">
-		
-		
 		{{range .datas}}
       <dl>
-        <dt><strong>{{.Name}}</strong></dt>
-        <dd><a href="page.php?rec=edit&id=1">编辑</a> | <a href="page.php?rec=del&id=1">删除</a></dd>
+        <dt><strong>{{.Name}}</strong>
+		</dt>
+        <dd><a href="/admin/template/update/{{.Id}}">编辑</a> | <a href="/admin/template/delete/{{.Id}}">删除</a></dd>
       </dl>
 		{{end}}
     </div>
