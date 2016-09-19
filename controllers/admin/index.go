@@ -5,6 +5,7 @@ import (
 	"personal_website/models"
 	"personal_website/utils"
 	"strings"
+	"time"
 )
 
 type IndexHandle struct {
@@ -40,6 +41,11 @@ func (this *IndexHandle) Login() {
 		return
 	}
 	u.Pass = ""
+
+	u.Lastlogin = int(time.Now().Unix())
+	u.Lastip = this.GetIP()
+	u.Update("lastlogin", "lastip") //更新登录日志
+
 	this.SetSession("currUser", u) //设置session
 	this.Redirect("/admin/main", 302)
 }

@@ -9,13 +9,14 @@ import (
 )
 
 type Admin struct {
-	Id        int    `json:"id"`
-	Name      string `json:"name"`
-	Nickname  string `json:"nickname"`
-	Pass      string `json:"pass"`
-	Email     string `json:"email"`
-	Mobile    string `json:"mobile"`
-	Address   string `json:"address"`
+	Id        int    `json:"id" form:"id"`
+	Name      string `json:"name" form:"name" valid:"Required;MaxSize(50)"`
+	Nickname  string `json:"nickname" form:"nickname" valid:"Required;MaxSize(50)"`
+	Pass      string `json:"pass" form:"pass" valid:"MaxSize(50)"`
+	Repass    string `form:"repass" orm:"-" valid:"MaxSize(50)"` //再次输入的密码，仅仅用于修改密码时校验
+	Email     string `json:"email" form:"email" valid:"Required;Email"`
+	Mobile    string `json:"mobile" form:"mobile" valid:"Required;Mobile"`
+	Address   string `json:"address" form:"address" valid:"Required;MaxSize(50)"`
 	Addtime   int    `json:"addtime"`
 	Lastlogin int    `json:"lastlogin"`
 	Lastip    string `json:"lastip"`

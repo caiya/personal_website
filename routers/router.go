@@ -41,10 +41,10 @@ func init() {
 	beego.Router("/admin/comment", &admin.CommentHandle{}, "GET:Index")
 
 	//后台管理员
-	beego.Router("/admin/manager", &admin.ManagerHandle{}, "GET:Index")
-	beego.Router("/admin/manager/update", &admin.ManagerHandle{}, "GET:Update")
+	beego.Router("/admin/manager/?:page", &admin.ManagerHandle{}, "GET:Index")
+	beego.Router("/admin/manager/update/?:id", &admin.ManagerHandle{}, "GET:ToUpdate")
 	beego.Router("/admin/manager/add", &admin.ManagerHandle{}, "GET:ToAdd")
-	beego.Router("/admin/manager/list", &admin.ManagerHandle{}, "POST:GetList")
+	beego.Router("/admin/manager/add", &admin.ManagerHandle{}, "POST:Add")
 
 	//日志模块
 	beego.Router("/admin/log/?:page", &admin.RecordHandle{}, "*:Index")

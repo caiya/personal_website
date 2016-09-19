@@ -1,38 +1,57 @@
  <div id="dcMain">
    <!-- 当前位置 -->
-<div id="urHere">DouPHP 管理中心<b>></b><strong>网站管理员</strong> </div>   <div id="manager" class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
+<div id="urHere">博客 管理中心<b>></b><strong>网站管理员</strong> </div>   <div id="manager" class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
     <h3><a href="/admin/manager" class="actionBtn">返回列表</a>网站管理员</h3>
-            <form action="manager.php?rec=insert" method="post">
+            <form id="myForm" method="post" action="/admin/manager/add">
      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>
        <td width="100" align="right">管理员名称</td>
        <td>
-        <input type="text" name="user_name" size="40" class="inpMain" />
+        <input type="text" name="name" size="40" class="inpMain" value="{{.admin.Name}}" id="name"/>
+       </td>
+      </tr>
+	<tr>
+       <td width="100" align="right">管理员昵称</td>
+       <td>
+        <input type="text" name="nickname" size="40" class="inpMain" value="{{.admin.Nickname}}" id="nickname"/>
+       </td>
+      </tr>
+	<tr>
+       <td width="100" align="right">联系地址</td>
+       <td>
+        <input type="text" name="address" size="40" class="inpMain" value="{{.admin.Address}}" id="address"/>
+       </td>
+      </tr>
+	<tr>
+       <td width="100" align="right">手机号</td>
+       <td>
+        <input type="text" name="mobile" size="40" class="inpMain" value="{{.admin.Mobile}}" id="mobile"/>
        </td>
       </tr>
       <tr>
        <td width="100" align="right">E-mail地址</td>
        <td>
-        <input type="text" name="email" size="40" class="inpMain" />
+        <input type="text" name="email" size="40" class="inpMain" value="{{.admin.Email}}" id="email"/>
        </td>
       </tr>
       <tr>
        <td align="right">密码</td>
        <td>
-        <input type="password" name="password" size="40" class="inpMain" />
+        <input type="password" name="pass" size="40" class="inpMain" id="pass"/>
        </td>
       </tr>
       <tr>
        <td align="right">确认密码</td>
        <td>
-        <input type="password" name="password_confirm" size="40" class="inpMain" />
+        <input type="password" name="repass" size="40" class="inpMain" id="repass"/>
        </td>
       </tr>
       <tr>
        <td></td>
        <td>
-        <input type="hidden" name="token" value="5a58b748" />
-        <input type="submit" name="submit" class="btn" value="提交" />
+        <input type="hidden" name="id" value="{{.admin.Id}}" />
+        <input type="button" class="btn" value="提交"  id="btn_save"/>
+		<span id="err" style="color:red;margin-left:20px;">{{.errmsg}}</span>
        </td>
       </tr>
      </table>
@@ -40,3 +59,16 @@
   </div>
  </div>
  <div class="clear"></div>
+ <script type="text/javascript">
+	jQuery(function(){
+		jQuery("#btn_save").click(function(){
+			var pass = jQuery("#pass").val();
+			var repass = jQuery("#repass").val();
+			if(pass.trim() != repass.trim()){
+				jQuery("#err").html("两次输入密码不一致，请重输");
+				return;
+			}
+			jQuery('#myForm').submit();
+		});
+	});
+</script>

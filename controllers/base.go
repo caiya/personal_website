@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"fmt"
+
 	"github.com/astaxie/beego"
 )
 
@@ -34,13 +36,13 @@ func (this *BaseHandle) RspTemp(layout string, tplname string, class string) {
 	this.TplName = tplname
 }
 
-//获取客户机ip
+//获取client ip
 func (this *BaseHandle) GetIP() string {
-	ip := this.Ctx.Request.Header.Get("X-Forwarded-For") //反向代理获取ip
-	//this.Ctx.Request.RemoteAddr 直接获取ip
-	if ip != "" {
-		return ip
-	} else {
-		return this.Ctx.Request.RemoteAddr
-	}
+	//	ip := this.Ctx.Request.Header.Get("X-Forwarded-For") //反向代理获取ip
+	//	if ip != "" {
+	//		return ip
+	//	} else {
+	//		return this.Ctx.Request.RemoteAddr / this.Ctx.Input.IP()
+	//	}
+	return this.Ctx.Input.IP()
 }
