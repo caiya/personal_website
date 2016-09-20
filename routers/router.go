@@ -61,4 +61,7 @@ func init() {
 	beego.Router("/admin/link/add", &admin.LinkHandle{}, "POST:Add")
 	beego.Router("/admin/link/update/?:id", &admin.LinkHandle{}, "GET:ToUpdate")
 
+	//上传
+	beego.Router("/upload", &admin.IndexHandle{}, "POST:Upload")
+
 }

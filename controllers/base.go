@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/astaxie/beego"
@@ -65,4 +66,18 @@ func (this *BaseHandle) GetIP() string {
 	//		return this.Ctx.Request.RemoteAddr / this.Ctx.Input.IP()
 	//	}
 	return this.Ctx.Input.IP()
+}
+
+//上传图片
+func (this *BaseHandle) UploadImg() {
+	f, fh, err := this.GetFile("editormd-image-file")
+	defer f.Close()
+	if err != nil {
+		fmt.Println("get file error ", err.Error())
+		this.Data["json"] = &map[string]interface{}{"url": "", "success": 0, "msg": err.Error()}
+	} else {
+		this.SaveToFile("editormd-image-file", "static/upload/"+fh.Filename)
+		this.Data["json"] = &map[string]interface{}{"url": "/static/upload/" + fh.Filename, "success": 1, "msg": "图片上传成功"}
+	}
+	this.ServeJSON()
 }

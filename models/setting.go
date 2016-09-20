@@ -53,7 +53,7 @@ func (setting *Setting) Update(field ...string) error {
 	return nil
 }
 
-//删除
+//查询
 func (setting *Setting) Read(field ...string) error {
 	if err := orm.NewOrm().Read(setting, field...); err != nil {
 		return err

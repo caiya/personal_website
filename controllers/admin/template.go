@@ -11,6 +11,7 @@ type TemplateHandle struct {
 	controllers.BaseHandle
 }
 
+//首页
 func (this *TemplateHandle) Index() {
 	temp := &models.Template{}
 	temps, _ := temp.GetList(nil, nil)
@@ -19,6 +20,7 @@ func (this *TemplateHandle) Index() {
 	return
 }
 
+//新增页
 func (this *TemplateHandle) ToAdd() {
 	this.RspTemp("admin/layout.html", "admin/add_page.html", "c2")
 	return

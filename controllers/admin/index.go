@@ -66,3 +66,9 @@ func (this *MainHandle) Main() {
 		this.Redirect("/admin", 302)
 	}
 }
+
+//上传图片
+func (this *IndexHandle) Upload() {
+	this.UploadImg()
+	return
+}

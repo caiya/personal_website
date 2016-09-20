@@ -43,7 +43,10 @@
          testEditor = editormd("editor", {
              width   : "90%",
              height  : 640,
-             path    : "/static/components/editor.md/lib/"
+             path    : "/static/components/editor.md/lib/",
+			 imageUpload    : true,
+		     imageFormats   : ["jpg", "jpeg", "gif", "png", "bmp"],
+		     imageUploadURL : "/upload"
          });
 	});
 </script>
