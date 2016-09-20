@@ -20,6 +20,9 @@ func init() {
 	//单页模板
 	beego.Router("/admin/template", &admin.TemplateHandle{}, "GET:Index")
 	beego.Router("/admin/template/add", &admin.TemplateHandle{}, "GET:ToAdd")
+	beego.Router("/admin/template/add", &admin.TemplateHandle{}, "POST:Add")
+	beego.Router("/admin/template/update/?:id", &admin.TemplateHandle{}, "GET:ToUpdate")
+	beego.Router("/admin/template/delete/?:id", &admin.TemplateHandle{}, "GET:Delete")
 
 	//相册分类
 	beego.Router("/admin/gallerytype", &admin.GallerytypeHandle{}, "GET:Index")

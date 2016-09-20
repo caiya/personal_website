@@ -7,10 +7,10 @@ import (
 )
 
 type Template struct {
-	Id      int    `json:"id"`
-	Name    string `json:"name"`
-	Content string `json:"content"`
-	Remark  string `json:"remark"`
+	Id      int    `json:"id" form:"id"`
+	Name    string `json:"name" form:"name"`
+	Content string `json:"content" form:"content"`
+	Remark  string `json:"remark" form:"remark"`
 }
 
 func (template *Template) TableName() string {
@@ -28,8 +28,16 @@ func (template *Template) Query() orm.QuerySeter {
 }
 
 //修改
-func (template *Template) ToUpdate(field ...string) error {
+func (template *Template) Update(field ...string) error {
 	if _, err := orm.NewOrm().Update(template, field...); err != nil {
+		return err
+	}
+	return nil
+}
+
+//新增
+func (template *Template) Insert() error {
+	if _, err := orm.NewOrm().Insert(template); err != nil {
 		return err
 	}
 	return nil
@@ -38,6 +46,14 @@ func (template *Template) ToUpdate(field ...string) error {
 //删除
 func (template *Template) Delete() error {
 	if _, err := orm.NewOrm().Delete(template); err != nil {
+		return err
+	}
+	return nil
+}
+
+//查询
+func (template *Template) Read(fields ...string) error {
+	if err := orm.NewOrm().Read(template, fields...); err != nil {
 		return err
 	}
 	return nil

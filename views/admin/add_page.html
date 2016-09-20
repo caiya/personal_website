@@ -9,25 +9,25 @@
       <tr>
        <td width="80" align="right">单页面名称</td>
        <td>
-        <input type="text" name="name" size="40" class="inpMain" />
+        <input type="text" name="name" size="40" class="inpMain" value="{{.temp.Name}}"/>
        </td>
       </tr>
       <tr>
        <td align="right">单页面内容</td>
        <td id="editor" class="editormd">
-			<textarea class="editormd-markdown-textarea" name="content"></textarea>
+			<textarea class="editormd-markdown-textarea" name="content">{{.temp.Content}}</textarea>
        </td>
       </tr>
       <tr>
        <td align="right">简单描述</td>
        <td>
-        <input type="text" name="remark" value="" size="90" class="inpMain" />
+        <input type="text" name="remark" value="{{.temp.Remark}}" size="90" class="inpMain" />
        </td>
       </tr>
       <tr>
        <td></td>
        <td>
-        <input type="hidden" name="id" value="">
+        <input type="hidden" name="id" value="{{.temp.Id}}">
         <input name="save" class="btn" id="btn_save" type="submit" value="提交" />
        </td>
       </tr>
