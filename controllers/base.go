@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"strings"
 
 	"github.com/astaxie/beego"
@@ -31,15 +30,17 @@ func (this *BaseHandle) Prepare() {
 		val := cfg.Section("whitecontroller").Key("controller").String()
 		CONFIG = strings.Split(val, ",")
 	}
-
-	fmt.Println(controller)
-
+	var flag = false
 	if u == nil { //如果用户未登录并且访问非白名单
-		for _, val := range CONFIG {
-			if val != controller {
-				this.Redirect("/admin", 302)
-				return
+		for _, v := range CONFIG {
+			if v == controller { //在白名单，直接退出循环
+				flag = true
+				break
 			}
+		}
+		if !flag {
+			this.Redirect("/admin", 302)
+			return
 		}
 	} else {
 		this.Data["currUser"] = u
