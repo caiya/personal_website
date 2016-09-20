@@ -1,0 +1,24 @@
+{
+  "name": "personal_website",
+  "homepage": "https://github.com/caiya/personal_website",
+  "authors": [
+    "caiya928@aliyun.com"
+  ],
+  "description": "个人博客站点",
+  "main": "main.go",
+  "keywords": [
+    "golang"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "editor.md": "^1.5.0"
+  }
+}
