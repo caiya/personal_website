@@ -1,48 +1,21 @@
- <div id="dcMain">
+ <link rel="stylesheet" href="/static/components/editor.md/css/editormd.css" />
+ <script src="/static/components/editor.md/editormd.min.js"></script>
+<div id="dcMain">
    <!-- 当前位置 -->
 <div id="urHere">博客 管理中心<b>></b><strong>添加单页面</strong> </div>   <div class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
     <h3><a href="/admin/template" class="actionBtn">单页面列表</a>添加单页面</h3>
-            <form action="page.php?rec=insert" method="post">
+            <form action="/admin/template/add" method="post">
      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>
        <td width="80" align="right">单页面名称</td>
        <td>
-        <input type="text" name="name" value="" size="40" class="inpMain" />
+        <input type="text" name="name" size="40" class="inpMain" />
        </td>
       </tr>
       <tr>
        <td align="right">单页面内容</td>
-       <td>
-        <!-- KindEditor -->		
-			<link rel="stylesheet" href="/static/js/kindeditor/themes/default/default.css" />
-			<link rel="stylesheet" href="/static/js/kindeditor/plugins/code/prettify.css" />
-			<script charset="utf-8" src="/static/js/kindeditor/kindeditor.js"></script>
-			<script charset="utf-8" src="/static/js/kindeditor/lang/zh_CN.js"></script>
-			<script charset="utf-8" src="/static/js/kindeditor/plugins/code/prettify.js"></script>
-        <script>
-					KindEditor.ready(function(K) {
-						var editor1 = K.create('textarea[name="content"]', {
-							cssPath : '/static/js/kindeditor/plugins/code/prettify.css',
-							uploadJson : '../php/upload_json.php',
-							fileManagerJson : '../php/file_manager_json.php',
-							allowFileManager : true,
-							afterCreate : function() {
-								var self = this;
-								K.ctrl(document, 13, function() {
-									self.sync();
-									K('form[name=example]')[0].submit();
-								});
-								K.ctrl(self.edit.doc, 13, function() {
-									self.sync();
-									K('form[name=example]')[0].submit();
-								});
-							}
-						});
-						prettyPrint();
-					});
-        </script>
-        <!-- /KindEditor -->
-        <textarea id="content" name="content" style="width:780px;height:400px;" class="textArea"></textarea>
+       <td id="editor" class="editormd">
+			<textarea class="editormd-markdown-textarea" name="content"></textarea>
        </td>
       </tr>
       <tr>
@@ -55,11 +28,22 @@
        <td></td>
        <td>
         <input type="hidden" name="id" value="">
-        <input name="submit" class="btn" type="submit" value="提交" />
+        <input name="save" class="btn" id="btn_save" type="submit" value="提交" />
        </td>
       </tr>
      </table>
     </form>
-       </div>
+   </div>
  </div>
  <div class="clear"></div>
+
+<script type="text/javascript">
+	var testEditor;
+    $(function() {
+         testEditor = editormd("editor", {
+             width   : "90%",
+             height  : 640,
+             path    : "/static/components/editor.md/lib/"
+         });
+	});
+</script>
