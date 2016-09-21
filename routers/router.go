@@ -16,6 +16,7 @@ func init() {
 
 	//系统设置
 	beego.Router("/admin/setting", &admin.SettingHandle{}, "GET:Index")
+	beego.Router("/admin/setting/update", &admin.SettingHandle{}, "POST:Update")
 
 	//单页模板
 	beego.Router("/admin/template", &admin.TemplateHandle{}, "GET:Index")

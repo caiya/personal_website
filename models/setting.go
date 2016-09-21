@@ -5,15 +5,15 @@ import (
 )
 
 type Setting struct {
-	Id                 int    `json:"id"`
-	Indexcount         int    `json:"indexcount"`
-	Gallerycount       int    `json:"gallerycount"`
-	Blogcount          int    `json:"blogcount"`
-	Typecount          int    `json:"typecount"`
-	Recentpostcount    int    `json:"recentpostcount"`
-	Recentcommentcount int    `json:"recentcommentcount"`
-	Blackip            string `json:"blackip"`
-	Sitename           string `json:"sitename"`
+	Id                 int    `json:"id" form:"id"`
+	Indexcount         int    `json:"indexcount" form:"indexcount" valid:"Required;Range(0,1000)"`
+	Gallerycount       int    `json:"gallerycount" form:"gallerycount" valid:"Required;Range(0,1000)`
+	Blogcount          int    `json:"blogcount" form:"blogcount" valid:"Required;Range(0,1000)`
+	Typecount          int    `json:"typecount" form:"typecount" valid:"Required;Range(0,1000)`
+	Recentpostcount    int    `json:"recentpostcount" form:"recentpostcount" valid:"Required;Range(0,1000)`
+	Recentcommentcount int    `json:"recentcommentcount" form:"recentcommentcount" valid:"Required;Range(0,1000)`
+	Blackip            string `json:"blackip" form:"blackip"`
+	Sitename           string `json:"sitename" form:"sitename"`
 }
 
 func (setting *Setting) TableName() string {

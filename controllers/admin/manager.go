@@ -64,7 +64,9 @@ func (this *ManagerHandle) ToUpdate() {
 func (this *ManagerHandle) Add() {
 	admin := &models.Admin{}
 	if err := this.ParseForm(admin); err != nil {
+		admin.Read("id")
 		this.Data["errmsg"] = err.Error()
+		this.Data["admin"] = admin
 		this.RspTemp("admin/layout.html", "admin/add_manager.html", "c8")
 		return
 	}
@@ -72,11 +74,14 @@ func (this *ManagerHandle) Add() {
 	b, err := valid.Valid(admin)
 	if err != nil { //程序出错
 		this.Data["errmsg"] = err.Error()
+		admin.Read("id")
+		this.Data["admin"] = admin
 		this.RspTemp("admin/layout.html", "admin/add_manager.html", "c8")
 		return
 	}
 	if !b { //校验失败
 		for _, err := range valid.Errors {
+			admin.Read("id")
 			this.Data["admin"] = admin
 			this.Data["errmsg"] = err.Error()
 			this.RspTemp("admin/layout.html", "admin/add_manager.html", "c8")

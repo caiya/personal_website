@@ -29,37 +29,37 @@
                     <tr>
            <td align="right">首页相册分页大小</td>
            <td>
-            <input type="text" name="gallerycount" value="" size="80" class="inpMain" />
+            <input type="text" name="gallerycount" value="{{.setting.Gallerycount}}" size="80" class="inpMain" />
                        </td>
           </tr>
                     <tr>
            <td align="right">博客分页大小</td>
            <td>
-            <input type="text" name="blogcount" value="" size="80" class="inpMain" />
+            <input type="text" name="blogcount" value="{{.setting.Blogcount}}" size="80" class="inpMain" />
                        </td>
           </tr>
                     <tr>
            <td align="right">博客分类显示数量</td>
            <td>
-            <input type="text" name="typecount" value="" size="80" class="inpMain" />
+            <input type="text" name="typecount" value="{{.setting.Typecount}}" size="80" class="inpMain" />
                        </td>
           </tr>
 		<tr>
            <td align="right">最新发布查询数量</td>
            <td>
-            <input type="text" name="recentpostcount" value="" size="80" class="inpMain" />
+            <input type="text" name="recentpostcount" value="{{.setting.Recentpostcount}}" size="80" class="inpMain" />
                        </td>
           </tr>
 		<tr>
            <td align="right">最新评论显示数量</td>
            <td>
-            <input type="text" name="recentcommentcount" value="" size="80" class="inpMain" />
+            <input type="text" name="recentcommentcount" value="{{.setting.Recentcommentcount}}" size="80" class="inpMain" />
                        </td>
           </tr>
 		<tr>
            <td align="right">IP黑名单</td>
            <td>
-            <input type="text" name="blackip" value="" size="80" class="inpMain" />
+            <input type="text" name="blackip" value="{{.setting.Blackip}}" size="80" class="inpMain" />
                        </td>
           </tr>
 		<tr>
@@ -130,8 +130,9 @@
          <tr>
           <td width="131"></td>
           <td>
-           <input type="hidden" name="token" value="24760807" />
+           <input type="hidden" name="id" value="{{.setting.Id}}" />
            <input name="submit" class="btn" type="submit" value="提交" />
+		   <span id="err" style="color:red;margin-left:20px;">{{.errmsg}}</span>
           </td>
          </tr>
         </table>
