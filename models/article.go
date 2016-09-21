@@ -10,12 +10,10 @@ type Article struct {
 	Content  string       `json:"content"`
 	Addtime  int          `json:"addtime"`
 	Uptime   int          `json:"uptime"`
-	Uid      *User        `json:"uid" orm:"rel(fk)"`
-	Uname    string       `json:"uname"` //作者名称-非数据库字段
+	User     *User        `json:"user" orm:"rel(fk)"`
 	Link     string       `json:"link"`
 	Intro    string       `json:"intro"`
-	Typeid   *Articletype `json:"typeid" orm:"rel(fk)"`
-	Typename string       `json:"typename"`
+	Type     *Articletype `json:"type" orm:"rel(fk)"`
 	Comments []*Comment   `orm:"reverse(many)"` //反向一对多关联
 }
 

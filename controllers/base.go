@@ -24,10 +24,11 @@ func (this *BaseHandle) RspJson(status bool, msg string) {
 
 //登录校验
 func (this *BaseHandle) Prepare() {
-	//测试关联查询
-	article := &models.Article{}
-	orm.NewOrm().QueryTable("article").Filter("Id", 1).RelatedSel().One(article)
-	fmt.Println(article.Uid)
+	var user models.User
+	err := orm.NewOrm().QueryTable("user").Filter("Name", "张三").Limit(1).One(&user)
+	if err == nil {
+		fmt.Println(user)
+	}
 
 	u := this.GetSession("currUser")
 	controller, _ := this.GetControllerAndAction()

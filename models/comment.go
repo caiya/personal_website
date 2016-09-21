@@ -10,7 +10,7 @@ type Comment struct {
 	Cemail  string   `json:"cemail"`
 	Content string   `json:"content"`
 	Addtime int      `json:"addtime"`
-	Aid     *Article `json:"aid" orm:"rel(fk)"`
+	Aid     *Article `json:"article" orm:"rel(fk)"`
 }
 
 func (comment *Comment) TableName() string {
