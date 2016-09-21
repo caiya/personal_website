@@ -2,9 +2,11 @@ package controllers
 
 import (
 	"fmt"
+	"personal_website/models"
 	"strings"
 
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/orm"
 	"github.com/go-ini/ini"
 )
 
@@ -22,6 +24,11 @@ func (this *BaseHandle) RspJson(status bool, msg string) {
 
 //登录校验
 func (this *BaseHandle) Prepare() {
+	//测试关联查询
+	article := &models.Article{}
+	orm.NewOrm().QueryTable("article").Filter("Id", 1).RelatedSel().One(article)
+	fmt.Println(article.Uid)
+
 	u := this.GetSession("currUser")
 	controller, _ := this.GetControllerAndAction()
 

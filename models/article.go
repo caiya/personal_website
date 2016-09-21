@@ -5,17 +5,18 @@ import (
 )
 
 type Article struct {
-	Id       int    `json:"id"`
-	Title    string `json:"title"`
-	Content  string `json:"content"`
-	Addtime  int    `json:"addtime"`
-	Uptime   int    `json:"uptime"`
-	Uid      int    `json:"uid"`
-	Uname    string `json:"uname"` //作者名称-非数据库字段
-	Link     string `json:"link"`
-	Intro    string `json:"intro"`
-	Typeid   int    `json:"typeid"`
-	Typename string `json:"typename"`
+	Id       int          `json:"id"`
+	Title    string       `json:"title"`
+	Content  string       `json:"content"`
+	Addtime  int          `json:"addtime"`
+	Uptime   int          `json:"uptime"`
+	Uid      *User        `json:"uid" orm:"rel(fk)"`
+	Uname    string       `json:"uname"` //作者名称-非数据库字段
+	Link     string       `json:"link"`
+	Intro    string       `json:"intro"`
+	Typeid   *Articletype `json:"typeid" orm:"rel(fk)"`
+	Typename string       `json:"typename"`
+	Comments []*Comment   `orm:"reverse(many)"` //反向一对多关联
 }
 
 func (article *Article) TableName() string {

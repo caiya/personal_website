@@ -5,13 +5,12 @@ import (
 )
 
 type Comment struct {
-	Id      int    `json:"id"`
-	Cid     int    `json:"cid"`
-	Cname   string `json:"cname"`
-	Cemail  string `json:"cemail"`
-	Content string `json:"content"`
-	Addtime int    `json:"addtime"`
-	Aid     int    `json:"aid"`
+	Id      int      `json:"id"`
+	Cname   string   `json:"cname"`
+	Cemail  string   `json:"cemail"`
+	Content string   `json:"content"`
+	Addtime int      `json:"addtime"`
+	Aid     *Article `json:"aid" orm:"rel(fk)"`
 }
 
 func (comment *Comment) TableName() string {
@@ -20,4 +19,9 @@ func (comment *Comment) TableName() string {
 
 func (comment *Comment) Query() orm.QuerySeter {
 	return orm.NewOrm().QueryTable(comment)
+}
+
+//注册模型
+func init() {
+	orm.RegisterModel(new(Comment))
 }
