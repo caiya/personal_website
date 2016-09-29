@@ -95,3 +95,11 @@ func (this *ArticleHandle) ToUpdate() {
 func (this *ArticleHandle) Update() {
 
 }
+
+//删除
+func (this *ArticleHandle) Delete() {
+	id, _ := strconv.Atoi(this.Ctx.Input.Param(":id"))
+	article := &models.Article{Id: id}
+	article.Delete()
+	this.Redirect("/admin/article", 302)
+}

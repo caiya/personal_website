@@ -38,11 +38,12 @@ func init() {
 	beego.Router("/admin/articletype/add", &admin.ArticletypeHandle{}, "GET:ToAdd")
 
 	//文章|博客
-	beego.Router("/admin/article", &admin.ArticleHandle{}, "*:Index")
+	beego.Router("/admin/article/?:page", &admin.ArticleHandle{}, "*:Index")
 	beego.Router("/admin/article/add", &admin.ArticleHandle{}, "GET:ToAdd")
 	beego.Router("/admin/article/add", &admin.ArticleHandle{}, "POST:Add")
 	beego.Router("/admin/article/update", &admin.ArticleHandle{}, "GET:ToUpdate")
 	beego.Router("/admin/article/update", &admin.ArticleHandle{}, "POST:Update")
+	beego.Router("/admin/article/delete/:id", &admin.ArticleHandle{}, "GET:Delete")
 
 	//评论
 	beego.Router("/admin/comment", &admin.CommentHandle{}, "GET:Index")
