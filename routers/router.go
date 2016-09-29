@@ -43,6 +43,7 @@ func init() {
 
 	//评论
 	beego.Router("/admin/comment", &admin.CommentHandle{}, "GET:Index")
+	beego.Router("/admin/comment/delete/?:id", &admin.CommentHandle{}, "GET:Delete")
 
 	//后台管理员
 	beego.Router("/admin/manager/?:page", &admin.ManagerHandle{}, "GET:Index")
