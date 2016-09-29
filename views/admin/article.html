@@ -4,12 +4,11 @@
         <h3><a href="/admin/article/add" class="actionBtn add">添加文章</a>文章列表</h3>
     <div class="filter">
     <form action="article.php" method="post">
+	 文章id：<input name="keyword" type="text" class="inpMain" value="" size="20" />
      文章标题：<input name="keyword" type="text" class="inpMain" value="" size="20" />
+	 所属博主：<input name="keyword" type="text" class="inpMain" value="" size="20" />
      <input name="submit" class="btnGray" type="submit" value="筛选" />
     </form>
-    <span>
-        <a class="btnGray" href="article.php?rec=sort">开始筛选首页文章</a>
-        </span>
     </div>
         <div id="list">
     <form name="action" method="post" action="article.php?rec=action">
@@ -25,22 +24,24 @@
       <th width="100" align="center">文章分类</th>
       <th width="200" align="center">操作</th>
      </tr>
+	{{range .datas}}
           <tr>
-      <td align="center">1</td>
-      <td align="center">移动互联网产品设计的核心要素有哪些？</td>
-      <td align="center">摘要部分</td>
-	<td align="center"><a href="http://www.caiya928" target="_blank">http://www.caiya928</a></td>
-	<td align="center">2013-06-26 09:56:34</td>
-	<td align="center">2013-06-26 09:56:34</td>
-	<td align="center">张三</td>
-	<td align="center">小说</td>
+      <td align="center">{{.Id}}</td>
+      <td align="center">{{.Title}}</td>
+      <td align="center">{{.Intro}}</td>
+	<td align="center"><a href="http://www.caiya928" target="_blank">{{.Link}}</a></td>
+	<td align="center">{{FormatTimeStamp .Addtime "2006-01-02 15:04:05"}}</td>
+	<td align="center">{{FormatTimeStamp .Uptime "2006-01-02 15:04:05"}}</td>
+	<td align="center">{{.User.Name}}</td>
+	<td align="center">{{.Type.Name}}</td>
       <td align="center">
-              <a href="article.php?rec=edit&id=10">编辑</a> | <a href="article.php?rec=del&id=10">删除</a>
+              <a href="">编辑</a> | <a href="">删除</a>
              </td>
      </tr>
+	{{end}}
          </table>
     <div class="clear"></div>
-    <div class="pager">总计 10 个记录，共 1 页，当前第 1 页 | <a href="article.php?page=1">第一页</a> 上一页 下一页 <a href="article.php?page=1">最末页</a></div>           </div>
+    <div class="pager">总计 {{.count}} 个记录，共 {{.pageCount}} 页，当前第 {{.page}} 页 | {{if ne .page 1}}<a href="/admin/article/1">第一页</a>{{else}}第一页{{end}} {{if ne .page 1}}<a href="/admin/article/{{Down .page 1}}">上一页</a>{{else}}上一页{{end}} {{if lt .page .pageCount}}<a href="/admin/comment/{{Up .page 1}}">下一页</a>{{else}}下一页{{end}} {{if lt .page .pageCount}}<a href="/admin/article/{{.pageCount}}">最末页</a>{{else}}最末页{{end}}</div>           </div>
  </div>
  <div class="clear"></div>
  <script type="text/javascript">
