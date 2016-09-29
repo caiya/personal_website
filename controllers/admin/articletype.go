@@ -2,6 +2,7 @@ package admin
 
 import (
 	"personal_website/controllers"
+	"personal_website/models"
 )
 
 type ArticletypeHandle struct {
@@ -16,6 +17,9 @@ func (this *ArticletypeHandle) Index() {
 
 //新增页
 func (this *ArticletypeHandle) ToAdd() {
+	articletype := &models.Articletype{}
+	articletypes := articletype.GetAll()
+	this.Data["articletypes"] = articletypes
 	this.RspTemp("admin/layout.html", "admin/add_article_category.html", "c5")
 	return
 }

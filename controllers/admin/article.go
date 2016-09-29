@@ -1,7 +1,6 @@
 package admin
 
 import (
-	"fmt"
 	"personal_website/controllers"
 	"personal_website/models"
 	"strconv"
@@ -49,9 +48,6 @@ func (this *ArticleHandle) Index() {
 	} else {
 		pageCount = count/PAGESIZE + 1
 	}
-
-	fmt.Println(articles)
-
 	//数据回显
 	this.Data["id"] = id
 	this.Data["name"] = name
@@ -64,6 +60,25 @@ func (this *ArticleHandle) Index() {
 
 //新增页
 func (this *ArticleHandle) ToAdd() {
+	//获取文章分类下拉框数据
+	articletype := &models.Articletype{}
+	articletypes := articletype.GetAll()
+	this.Data["articletypes"] = articletypes
 	this.RspTemp("admin/layout.html", "admin/add_article.html", "c6")
 	return
+}
+
+//新增
+func (this *ArticleHandle) Add() {
+
+}
+
+//修改页
+func (this *ArticleHandle) ToUpdate() {
+
+}
+
+//修改
+func (this *ArticleHandle) Update() {
+
 }

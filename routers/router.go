@@ -40,6 +40,9 @@ func init() {
 	//文章|博客
 	beego.Router("/admin/article", &admin.ArticleHandle{}, "GET:Index")
 	beego.Router("/admin/article/add", &admin.ArticleHandle{}, "GET:ToAdd")
+	beego.Router("/admin/article/add", &admin.ArticleHandle{}, "POST:Add")
+	beego.Router("/admin/article/update", &admin.ArticleHandle{}, "GET:ToUpdate")
+	beego.Router("/admin/article/update", &admin.ArticleHandle{}, "POST:Update")
 
 	//评论
 	beego.Router("/admin/comment", &admin.CommentHandle{}, "GET:Index")
