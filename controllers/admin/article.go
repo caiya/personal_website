@@ -1,9 +1,11 @@
 package admin
 
 import (
+	"fmt"
 	"personal_website/controllers"
 	"personal_website/models"
 	"strconv"
+	"time"
 )
 
 type ArticleHandle struct {
@@ -70,7 +72,23 @@ func (this *ArticleHandle) ToAdd() {
 
 //新增
 func (this *ArticleHandle) Add() {
-
+	article := &models.Article{}
+	if err := this.ParseForm(article); err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+	fmt.Printf("%#v", article)
+	if article.Id == 0 { //新增
+		t, _ := this.GetInt("articletype")
+		article.Articletype = &models.Articletype{Id: t}
+		article.Addtime = int(time.Now().Unix())
+		article.Uptime = article.Addtime
+		article.User = &models.User{Id: 1} //指定当前用户为admin用户
+		article.Insert()
+	} else { //修改
+		article.Update()
+	}
+	this.Redirect("/admin/article", 302)
 }
 
 //修改页

@@ -41,8 +41,8 @@ func (this *BaseHandle) Prepare() {
 			}
 		}
 		if !flag {
-			//			this.Redirect("/admin", 302)
-			//			return
+			this.Redirect("/admin", 302)
+			return
 		}
 	} else {
 		this.Data["currUser"] = u

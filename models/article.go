@@ -9,16 +9,16 @@ import (
 )
 
 type Article struct {
-	Id       int          `json:"id"`
-	Title    string       `json:"title"`
-	Content  string       `json:"content"`
-	Addtime  int          `json:"addtime"`
-	Uptime   int          `json:"uptime"`
-	User     *User        `json:"user" orm:"rel(fk)"`
-	Link     string       `json:"link"`
-	Intro    string       `json:"intro"`
-	Type     *Articletype `json:"type" orm:"rel(fk)"`
-	Comments []*Comment   `orm:"reverse(many)"` //反向一对多关联
+	Id          int          `json:"id" form:"id"`
+	Title       string       `json:"title" form:"title"`
+	Content     string       `json:"content" form:"content"`
+	Addtime     int          `json:"addtime"`
+	Uptime      int          `json:"uptime"`
+	User        *User        `json:"user" orm:"rel(fk)"`
+	Link        string       `json:"link"`
+	Intro       string       `json:"intro" form:"intro"`
+	Articletype *Articletype `json:"articletype" orm:"rel(fk)" form:"articletype"`
+	Comments    []*Comment   `orm:"reverse(many)"` //反向一对多关联
 }
 
 func (article *Article) TableName() string {
