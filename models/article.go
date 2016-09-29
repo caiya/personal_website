@@ -12,13 +12,13 @@ type Article struct {
 	Id          int          `json:"id" form:"id"`
 	Title       string       `json:"title" form:"title"`
 	Content     string       `json:"content" form:"content"`
-	Addtime     int          `json:"addtime"`
-	Uptime      int          `json:"uptime"`
+	Addtime     int          `json:"addtime" form:"-"`
+	Uptime      int          `json:"uptime" form:"-"`
 	User        *User        `json:"user" orm:"rel(fk)"`
-	Link        string       `json:"link"`
+	Link        string       `json:"link" form:"-"`
 	Intro       string       `json:"intro" form:"intro"`
 	Articletype *Articletype `json:"articletype" orm:"rel(fk)" form:"articletype"`
-	Comments    []*Comment   `orm:"reverse(many)"` //反向一对多关联
+	Comments    []*Comment   `orm:"reverse(many)" form:"-"` //反向一对多关联
 }
 
 func (article *Article) TableName() string {

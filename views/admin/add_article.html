@@ -9,7 +9,7 @@
       <tr>
        <td width="90" align="right">文章标题</td>
        <td>
-        <input type="text" name="title" value="" size="80" class="inpMain" />
+        <input type="text" name="title" value="{{.article.Title}}" size="80" class="inpMain" />
        </td>
       </tr>
       <tr>
@@ -26,19 +26,19 @@
 	<tr>
        <td align="right">简单描述</td>
        <td>
-        <input type="text" name="intro" value="" size="50" class="inpMain" />
+        <input type="text" name="intro" value="{{.article.Intro}}" size="50" class="inpMain" />
        </td>
       </tr>
             <tr>
        <td align="right" valign="top">文章内容</td>
        <td id="editor" class="editormd">
-			<textarea class="editormd-markdown-textarea" name="content"></textarea>
+			<textarea class="editormd-markdown-textarea" name="content">{{.article.Content}}</textarea>
        </td>
       </tr>
       <tr>
        <td></td>
        <td>
-		<input type="hidden" name="id"/>
+		<input type="hidden" name="id" value="{{.article.Id}}"/>
         <input name="submit" class="btn" type="submit" value="提交" />
        </td>
       </tr>

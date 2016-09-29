@@ -73,9 +73,10 @@ func (this *ArticleHandle) Add() {
 		return
 	}
 	fmt.Printf("%#v", article)
-	if article.Id == 0 { //新增
-		t, _ := this.GetInt("articletype")
-		article.Articletype = &models.Articletype{Id: t}
+	t, _ := this.GetInt("articletype")
+	article.Articletype = &models.Articletype{Id: t}
+	article.User = &models.User{Id: 1} //指定当前用户为admin用户
+	if article.Id == 0 {               //新增
 		article.Addtime = int(time.Now().Unix())
 		article.Uptime = article.Addtime
 		article.User = &models.User{Id: 1} //指定当前用户为admin用户
@@ -88,7 +89,11 @@ func (this *ArticleHandle) Add() {
 
 //修改页
 func (this *ArticleHandle) ToUpdate() {
-
+	id, _ := strconv.Atoi(this.Ctx.Input.Param(":id"))
+	article := &models.Article{Id: id}
+	article.Read()
+	this.Data["article"] = article
+	this.RspTemp("admin/layout.html", "admin/add_article.html", "c6")
 }
 
 //修改
