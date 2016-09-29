@@ -15,19 +15,15 @@ type ArticleHandle struct {
 //博客首页
 func (this *ArticleHandle) Index() {
 	id := this.GetString("id")
-	name := this.GetString("name")
-	url := this.GetString("url")
+	title := this.GetString("title")
 
 	query := make(map[string]string, 0)
 
 	if id != "" {
 		query["id"] = id
 	}
-	if name != "" {
-		query["name.contains"] = name
-	}
-	if url != "" {
-		query["url.contains"] = url
+	if title != "" {
+		query["title.contains"] = title
 	}
 
 	page, _ := strconv.Atoi(this.Ctx.Input.Param(":page"))
@@ -52,8 +48,7 @@ func (this *ArticleHandle) Index() {
 	}
 	//数据回显
 	this.Data["id"] = id
-	this.Data["name"] = name
-	this.Data["url"] = url
+	this.Data["title"] = title
 	this.Data["pageCount"] = pageCount //总页数
 	this.Data["page"] = page           //当前页
 	this.RspTemp("admin/layout.html", "admin/article.html", "c6")

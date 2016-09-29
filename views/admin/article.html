@@ -3,15 +3,13 @@
 <div id="urHere">博客 管理中心<b>></b><strong>文章列表</strong> </div>   <div class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
         <h3><a href="/admin/article/add" class="actionBtn add">添加文章</a>文章列表</h3>
     <div class="filter">
-    <form action="article.php" method="post">
-	 文章id：<input name="keyword" type="text" class="inpMain" value="" size="20" />
-     文章标题：<input name="keyword" type="text" class="inpMain" value="" size="20" />
-	 所属博主：<input name="keyword" type="text" class="inpMain" value="" size="20" />
+    <form action="/admin/article" method="post">
+	 文章id：<input name="id" type="text" class="inpMain" value="{{.id}}" size="20" />
+     文章标题：<input name="title" type="text" class="inpMain" value="{{.title}}" size="20" />
      <input name="submit" class="btnGray" type="submit" value="筛选" />
     </form>
     </div>
         <div id="list">
-    <form name="action" method="post" action="article.php?rec=action">
     <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
      <tr>
       <th width="40" align="center">编号</th>
