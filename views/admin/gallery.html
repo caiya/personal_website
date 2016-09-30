@@ -1,49 +1,67 @@
 <style type="text/css">
+	img {
+        border: 0 none;
+        opacity: 1;
+        -webkit-transition:.3s ease-in-out;
+        transition: .3s ease-in-out;
+    }
 	.images li{
-		list-style: none;
-		float: left;
-		margin:0 50px 50px 50px;
+		list-style:none;
+		float:left;
+		margin:25px;
 	}
+    .images span{
+		display:none;
+	}
+    a:hover img{
+		cursor:pointer;
+		background-color:
+		filter:alpha(Opacity=70);-moz-opacity:0.7;opacity: 0.7;
+    }
+	a:hover span{ display:block;position:absolute; bottom:0; left:0;color:#FFF;width:554px; 
+z-index:10;height:36px; line-height:36px; background:#000;filter:alpha(opacity=60);-moz-opacity:0.5;opacity: 0.5;}
 </style>
  <div id="dcMain">
    <!-- 当前位置 -->
-<div id="urHere">DouPHP 管理中心<b>></b><strong>照片列表</strong> </div>   <div class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
+<div id="urHere">博客 管理中心<b>></b><strong>照片列表</strong> </div>   <div class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
         <h3><a href="/admin/gallery/add" class="actionBtn add">添加照片</a>照片列表</h3>
 		
 		<div class="images">
 	        <ul>
 	        	<li>
-	        		<img src="/static/images/img4.jpg">
+					<span>我是文字部分</span>
+	        		<a><img src="/static/images/img4.jpg"></a>
 	        	</li>
 	        	<li>
-	        		<img src="/static/images/img4.jpg">
+				<span>我是文字部分2</span>
+	        		<a><img src="/static/images/img4.jpg"></a>
 	        	</li>
 	        	<li>
-	        		<img src="/static/images/img4.jpg">
+	        		<a><img src="/static/images/img4.jpg"></a>
 	        	</li>
 	        	<li>
-	        		<img src="/static/images/img4.jpg">
+	        		<a><img src="/static/images/img4.jpg"></a>
 	        	</li>
 				<li>
-	        		<img src="/static/images/img4.jpg">
+	        		<a><img src="/static/images/img4.jpg"></a>
 	        	</li>
 	        </ul>
 			<ul>
-        	<li>
-        		<img src="/static/images/img4.jpg">
-        	</li>
-        	<li>
-        		<img src="/static/images/img4.jpg">
-        	</li>
-        	<li>
-        		<img src="/static/images/img4.jpg">
-        	</li>
-        	<li>
-        		<img src="/static/images/img4.jpg">
-        	</li>
-			<li>
-        		<img src="/static/images/img4.jpg">
-        	</li>
+	        	<li>
+	        		<a><img src="/static/images/img4.jpg"></a>
+	        	</li>
+	        	<li>
+	        		<a><img src="/static/images/img4.jpg"></a>
+	        	</li>
+	        	<li>
+	        		<a><img src="/static/images/img4.jpg"></a>
+	        	</li>
+	        	<li>
+	        		<a><img src="/static/images/img4.jpg"></a>
+	        	</li>
+				<li>
+	        		<a><img src="/static/images/img4.jpg"></a>
+	        	</li>
         </ul>
     	</div>
 		
