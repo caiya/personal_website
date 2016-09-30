@@ -5,10 +5,11 @@ import (
 )
 
 type Articletype struct {
-	Id       int        `json:"id"`
-	Name     string     `json:"name"`
-	Orderno  int        `json:"orderno"`
+	Id       int        `json:"id" form:"id"`
+	Name     string     `json:"name" form:"name"`
+	Orderno  int        `json:"orderno" form:"orderno"`
 	Articles []*Article `json:"articles" orm:"reverse(many)"`
+	Count    int        `json:"count" orm:"-" form:"-"`
 	Selected int        `json:"selected" orm:"-"`
 }
 
@@ -60,7 +61,7 @@ func (articletype *Articletype) Read(field ...string) error {
 //查询所有类别
 func (articletype *Articletype) GetAll() []Articletype {
 	var ats []Articletype
-	if _, err := articletype.Query().OrderBy("-id").All(&ats, "Id", "Name", "Orderno"); err != nil {
+	if _, err := articletype.Query().OrderBy("-Id").All(&ats, "Id", "Name", "Orderno"); err != nil {
 		return nil
 	}
 	return ats

@@ -2,7 +2,7 @@
    <!-- 当前位置 -->
 <div id="urHere">博客 管理中心<b>></b><strong>评论列表</strong> </div><div class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
         <div id="list">
-    <form name="action" method="post" action="article.php?rec=action">
+		<h3>评论列表</h3>
     <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
      <tr>
       <th width="40" align="center">编号</th>
@@ -13,7 +13,6 @@
       <th width="100" align="center">所属文章</th>
       <th width="80" align="center">操作</th>
      </tr>
-	
 	{{range .datas}}
           <tr>
       <td align="center">{{.Id}}</td>

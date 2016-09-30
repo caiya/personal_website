@@ -28,6 +28,9 @@ func init() {
 	//相册分类
 	beego.Router("/admin/gallerytype", &admin.GallerytypeHandle{}, "GET:Index")
 	beego.Router("/admin/gallerytype/add", &admin.GallerytypeHandle{}, "GET:ToAdd")
+	beego.Router("/admin/gallerytype/update/:id", &admin.GallerytypeHandle{}, "GET:ToUpdate")
+	beego.Router("/admin/gallerytype/add", &admin.GallerytypeHandle{}, "POST:Add")
+	beego.Router("/admin/gallerytype/delete/:id", &admin.GallerytypeHandle{}, "GET:Delete")
 
 	//相册
 	beego.Router("/admin/gallery", &admin.GalleryHandle{}, "GET:Index")
@@ -36,6 +39,9 @@ func init() {
 	//博客类别
 	beego.Router("/admin/articletype", &admin.ArticletypeHandle{}, "GET:Index")
 	beego.Router("/admin/articletype/add", &admin.ArticletypeHandle{}, "GET:ToAdd")
+	beego.Router("/admin/articletype/add", &admin.ArticletypeHandle{}, "POST:Add")
+	beego.Router("/admin/articletype/update/:id", &admin.ArticletypeHandle{}, "GET:ToUpdate")
+	beego.Router("/admin/articletype/delete/:id", &admin.ArticletypeHandle{}, "GET:Delete")
 
 	//文章|博客
 	beego.Router("/admin/article/?:page", &admin.ArticleHandle{}, "*:Index")
