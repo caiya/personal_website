@@ -42,7 +42,6 @@ func init() {
 	beego.Router("/admin/article/add", &admin.ArticleHandle{}, "GET:ToAdd")
 	beego.Router("/admin/article/add", &admin.ArticleHandle{}, "POST:Add")
 	beego.Router("/admin/article/update/:id", &admin.ArticleHandle{}, "GET:ToUpdate")
-	beego.Router("/admin/article/update", &admin.ArticleHandle{}, "POST:Update")
 	beego.Router("/admin/article/delete/:id", &admin.ArticleHandle{}, "GET:Delete")
 
 	//评论

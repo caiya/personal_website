@@ -18,7 +18,9 @@
         <select name="articletype">
 			<option value="0">请选择分类</option>
 			{{range .articletypes}}
-         	<option value="{{.Id}}">{{.Name}}</option>
+				{{if eq .Selected 1}}<option value="{{.Id}}" selected>{{.Name}}</option>
+         			{{else}}<option value="{{.Id}}">{{.Name}}</option>
+				{{end}}
 		 	{{end}}
         </select>
        </td>

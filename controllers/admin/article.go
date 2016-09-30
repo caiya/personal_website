@@ -46,6 +46,7 @@ func (this *ArticleHandle) Index() {
 	} else {
 		pageCount = count/PAGESIZE + 1
 	}
+	fmt.Println(articles)
 	//数据回显
 	this.Data["id"] = id
 	this.Data["title"] = title
@@ -72,17 +73,17 @@ func (this *ArticleHandle) Add() {
 		fmt.Println(err.Error())
 		return
 	}
-	fmt.Printf("%#v", article)
 	t, _ := this.GetInt("articletype")
 	article.Articletype = &models.Articletype{Id: t}
 	article.User = &models.User{Id: 1} //指定当前用户为admin用户
-	if article.Id == 0 {               //新增
-		article.Addtime = int(time.Now().Unix())
-		article.Uptime = article.Addtime
+	now := int(time.Now().Unix())
+	article.Uptime = now
+	if article.Id == 0 { //新增
+		article.Addtime = now
 		article.User = &models.User{Id: 1} //指定当前用户为admin用户
 		article.Insert()
 	} else { //修改
-		article.Update()
+		article.Update("Id", "Title", "Content", "Uptime", "User", "Link", "Intro", "Articletype")
 	}
 	this.Redirect("/admin/article", 302)
 }
@@ -92,13 +93,22 @@ func (this *ArticleHandle) ToUpdate() {
 	id, _ := strconv.Atoi(this.Ctx.Input.Param(":id"))
 	article := &models.Article{Id: id}
 	article.Read()
+
+	articletype := &models.Articletype{}
+	articletypes := articletype.GetAll()
+	this.Data["articletypes"] = articletypes
+
+	fmt.Println(article.Articletype.Id)
+
+	for index, value := range articletypes {
+		if value.Id == article.Articletype.Id {
+			articletypes[index].Selected = 1
+		} else {
+			articletypes[index].Selected = 0
+		}
+	}
 	this.Data["article"] = article
 	this.RspTemp("admin/layout.html", "admin/add_article.html", "c6")
-}
-
-//修改
-func (this *ArticleHandle) Update() {
-
 }
 
 //删除

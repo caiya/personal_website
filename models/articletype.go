@@ -9,6 +9,7 @@ type Articletype struct {
 	Name     string     `json:"name"`
 	Orderno  int        `json:"orderno"`
 	Articles []*Article `json:"articles" orm:"reverse(many)"`
+	Selected int        `json:"selected" orm:"-"`
 }
 
 func (articletype *Articletype) TableName() string {
