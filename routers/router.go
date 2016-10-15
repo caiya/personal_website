@@ -1,6 +1,7 @@
 package routers
 
 import (
+	"personal_website/controllers"
 	"personal_website/controllers/admin"
 
 	"github.com/astaxie/beego"
@@ -35,6 +36,7 @@ func init() {
 	//相册
 	beego.Router("/admin/gallery/?:page", &admin.GalleryHandle{}, "GET:Index")
 	beego.Router("/admin/gallery/add", &admin.GalleryHandle{}, "GET:ToAdd")
+	beego.Router("/admin/gallery/add", &admin.GalleryHandle{}, "POST:Add")
 	beego.Router("/admin/gallery/update/?:id", &admin.GalleryHandle{}, "GET:ToUpdate")
 
 	//博客类别
@@ -76,4 +78,6 @@ func init() {
 	//上传
 	beego.Router("/upload", &admin.IndexHandle{}, "POST:Upload")
 
+	//前台begin
+	beego.Router("/", &controllers.IndexController{}, "*:Index")
 }

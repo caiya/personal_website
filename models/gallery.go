@@ -9,10 +9,11 @@ import (
 )
 
 type Gallery struct {
-	Id      int    `json:"id"`
-	Title   string `json:"title"`
-	Imgurl  string `json:"imgurl"`
-	Orderno int    `json:"orderno"`
+	Id          int          `json:"id" form:"id"`
+	Title       string       `json:"title" form:"title"`
+	Imgurl      string       `json:"imgurl" form:"imgurl"`
+	Orderno     int          `json:"orderno" form:"orderno"`
+	Gallerytype *Gallerytype `json:"gallerytype" orm:"rel(fk)" form:"gallerytype"`
 }
 
 func (gallery *Gallery) TableName() string {

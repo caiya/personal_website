@@ -5,21 +5,24 @@
    <!-- 当前位置 -->
 <div id="urHere">博客 管理中心<b>></b><strong>添加照片</strong> </div>   <div class="mainBox" style="height:auto!important;height:550px;min-height:550px;">
             <h3><a href="/admin/gallery" class="actionBtn">照片列表</a>添加照片</h3>
-    <form action="product.php?rec=insert" method="post" enctype="multipart/form-data">
+    <form action="/admin/gallery/add" method="post">
      <table width="100%" border="0" cellpadding="8" cellspacing="0" class="tableBasic">
       <tr>
        <td width="90" align="right">照片标题</td>
        <td>
-        <input type="text" name="title" value="" size="80" class="inpMain" />
+        <input type="text" name="title" value="{{.gallery.Title}}" size="80" class="inpMain" />
        </td>
       </tr>
       <tr>
        <td align="right">照片分类</td>
        <td>
-        <select name="cat_id">
-         <option value="0">未分类</option>
-            <option value="1"> 电子数码</option>
-                
+        <select name="gallerytype">
+                <option value="0">请选择分类</option>
+			{{range .gallerytypes}}
+				{{if eq .Selected 1}}<option value="{{.Id}}" selected>{{.Name}}</option>
+         			{{else}}<option value="{{.Id}}">{{.Name}}</option>
+				{{end}}
+		 	{{end}}
             </select>
        </td>
       </tr>
@@ -29,21 +32,21 @@
 		<input style="margin-bottom:10px" type="file" name="editormd-image-file" id="editormd-image-file" data-url="/upload"/>
 		<br/>
 		<span>
-			<input type="hidden" id="imgurl" value="/static/images/default.jpg" name="imgurl"/>
-			<img id="imgurl2" style="width:230px;height:200px;" name="imgurl2" src="/static/images/default.jpg"/>
+			<input type="hidden" id="imgurl" value="{{if .gallery.Imgurl}}{{.gallery.Imgurl}}{{else}}/static/images/default.jpg{{end}}" name="imgurl"/>
+			<img id="imgurl2" style="width:230px;height:200px;" name="imgurl2" src="{{if .gallery.Imgurl}}{{.gallery.Imgurl}}{{else}}/static/images/default.jpg{{end}}"/>
 		</span>
 		</td>
       </tr>
       <tr>
        <td align="right">显示顺序</td>
        <td>
-        <input type="text" name="orderno" value="" size="50" class="inpMain" />
+        <input type="text" name="orderno" value="{{.gallery.Orderno}}" size="50" class="inpMain" />
        </td>
       </tr>
       <tr>
        <td></td>
        <td>
-        <input type="hidden" name="id" value="">
+        <input type="hidden" name="id" value="{{.gallery.Id}}">
         <input name="submit" class="btn" type="submit" value="提交" />
        </td>
       </tr>
@@ -64,6 +67,6 @@
 					alert(data.result.msg);
 				}
 	        }
-		})
+		});
 	});
 </script>

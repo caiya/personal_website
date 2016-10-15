@@ -5,10 +5,12 @@ import (
 )
 
 type Gallerytype struct {
-	Id      int    `json:"id" form:"id"`
-	Name    string `json:"name" form:"name"`
-	Orderno int    `json:"orderno" form:"orderno"`
-	Remark  string `json:"remark" form:"remark"`
+	Id       int        `json:"id" form:"id"`
+	Name     string     `json:"name" form:"name"`
+	Orderno  int        `json:"orderno" form:"orderno"`
+	Remark   string     `json:"remark" form:"remark"`
+	Gallerys []*Gallery `json:"gallerys" orm:"reverse(many)"`
+	Selected int        `json:"selected" orm:"-"`
 }
 
 func (gallerytype *Gallerytype) TableName() string {

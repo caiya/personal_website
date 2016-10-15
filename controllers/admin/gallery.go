@@ -43,10 +43,50 @@ func (this *GalleryHandle) Index() {
 
 //新增页
 func (this *GalleryHandle) ToAdd() {
+	gallerytype := new(models.Gallerytype)
+	gallerytypes := gallerytype.GetAll()
+	this.Data["gallerytypes"] = gallerytypes
 	this.RspTemp("admin/layout.html", "admin/add_gallery.html", "c4")
 }
 
 //修改页
 func (this *GalleryHandle) ToUpdate() {
+	id, _ := strconv.Atoi(this.Ctx.Input.Param(":id"))
+	gallery := &models.Gallery{Id: id}
+	gallery.Read()
+	this.Data["gallery"] = gallery
+
+	gallerytype := new(models.Gallerytype)
+	gallerytypes := gallerytype.GetAll()
+
+	fmt.Println(gallerytypes)
+
+	for index, value := range gallerytypes {
+		if value.Id == gallery.Gallerytype.Id {
+			gallerytypes[index].Selected = 1
+		} else {
+			gallerytypes[index].Selected = 0
+		}
+	}
+
+	this.Data["gallerytypes"] = gallerytypes
 	this.RspTemp("admin/layout.html", "admin/add_gallery.html", "c4")
+}
+
+//新增
+func (this *GalleryHandle) Add() {
+
+	gallery := new(models.Gallery)
+	if err := this.ParseForm(gallery); err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+	t, _ := this.GetInt("gallerytype")
+	gallery.Gallerytype = &models.Gallerytype{Id: t}
+	if gallery.Id == 0 { //新增
+		gallery.Insert()
+	} else { //修改
+		gallery.Update()
+	}
+	this.Redirect("/admin/gallery", 302)
 }
