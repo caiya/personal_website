@@ -17,6 +17,7 @@ type User struct {
 	Addtime   int        `json:"addtime"`
 	Lastlogin int        `json:"lastlogin"`
 	Articles  []*Article `orm:"reverse(many)"`
+	Isadmin   int
 }
 
 func (user *User) TableName() string {

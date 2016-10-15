@@ -75,7 +75,7 @@ func (this *ArticleHandle) Add() {
 	}
 	t, _ := this.GetInt("articletype")
 	article.Articletype = &models.Articletype{Id: t}
-	article.User = &models.User{Id: 1} //指定当前用户为admin用户
+	article.User = &models.User{Isadmin: 1} //指定当前用户为admin用户
 	now := int(time.Now().Unix())
 	article.Uptime = now
 	if article.Id == 0 { //新增

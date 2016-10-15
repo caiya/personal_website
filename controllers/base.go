@@ -2,7 +2,9 @@ package controllers
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
+	"time"
 
 	"github.com/astaxie/beego"
 	"github.com/go-ini/ini"
@@ -71,14 +73,15 @@ func (this *BaseHandle) GetIP() string {
 
 //上传图片
 func (this *BaseHandle) UploadImg() {
-	f, fh, err := this.GetFile("editormd-image-file")
+	f, _, err := this.GetFile("editormd-image-file")
 	defer f.Close()
 	if err != nil {
 		fmt.Println("get file error ", err.Error())
 		this.Data["json"] = &map[string]interface{}{"url": "", "success": 0, "msg": err.Error()}
 	} else {
-		this.SaveToFile("editormd-image-file", "static/upload/"+fh.Filename)
-		this.Data["json"] = &map[string]interface{}{"url": "/static/upload/" + fh.Filename, "success": 1, "msg": "图片上传成功"}
+		imgurl := strconv.Itoa(int(time.Now().Unix())) + ".png"
+		this.SaveToFile("editormd-image-file", "static/upload/"+imgurl)
+		this.Data["json"] = &map[string]interface{}{"url": "/static/upload/" + imgurl, "success": 1, "msg": "图片上传成功"}
 	}
 	this.ServeJSON()
 }

@@ -33,8 +33,9 @@ func init() {
 	beego.Router("/admin/gallerytype/delete/:id", &admin.GallerytypeHandle{}, "GET:Delete")
 
 	//相册
-	beego.Router("/admin/gallery", &admin.GalleryHandle{}, "GET:Index")
+	beego.Router("/admin/gallery/?:page", &admin.GalleryHandle{}, "GET:Index")
 	beego.Router("/admin/gallery/add", &admin.GalleryHandle{}, "GET:ToAdd")
+	beego.Router("/admin/gallery/update/?:id", &admin.GalleryHandle{}, "GET:ToUpdate")
 
 	//博客类别
 	beego.Router("/admin/articletype", &admin.ArticletypeHandle{}, "GET:Index")

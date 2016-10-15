@@ -16,7 +16,7 @@
      <tr>
       <th width="22" align="center"><input name='chkall' type='checkbox' id='chkall' onclick='selectcheckbox(this.form)' value='check'></th>
       <th width="40" align="center">编号</th>
-      <th align="left">链接名称</th>
+      <th align="center">链接名称</th>
       <th width="150" align="center">链接地址</th>
       <th width="80" align="center">显示顺序</th>
       <th width="80" align="center">操作</th>
@@ -25,7 +25,7 @@
 		{{range .datas}}
       <td align="center"><input type="checkbox" name="checkbox" value="{{.Id}}" /></td>
       <td align="center">{{.Id}}</td>
-      <td>{{.Name}}</td>
+      <td align="center">{{.Name}}</td>
       <td align="center"><a href="{{.Url}}" target="_blank">{{.Url}}</a></td>
       <td align="center">{{.Orderno}}</td>
       <td align="center">
