@@ -2,47 +2,15 @@
 <html>
 <head>
 <title>Gallery</title>
-<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
-<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-<!--web-font-->
-<link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-<link href='http://fonts.useso.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-<!--//web-font-->
+<link href="/static/css/style.css" type="text/css" rel="stylesheet" media="all">
+<link href="/static/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Showy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<script src="http://ajax.useso.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <!-- //Custom Theme files -->
-<!-- js -->
-<script src="js/jquery.min.js"></script>
-<script src="js/modernizr.custom.js"></script>
-<!-- //js -->	
-<!-- start-smoth-scrolling-->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>	
-<script type="text/javascript" src="js/modernizr.custom.53451.js"></script>
-<script type="text/javascript">
-		jQuery(document).ready(function($) {
-			$(".scroll").click(function(event){		
-				event.preventDefault();
-				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-			});
-		});
-</script>
-<!--//end-smoth-scrolling-->
-<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
-		<script type="text/javascript">
-			$(document).ready(function () {
-				$('#horizontalTab').easyResponsiveTabs({
-					type: 'default', //Types: default, vertical, accordion           
-					width: 'auto', //auto or any width like 600px
-					fit: true   // 100% fit in a container
-				});
-			});
-</script>
 </head>
 <body>
 	<!--header-->
@@ -55,10 +23,10 @@
 				<span class="menu"><img src="images/menu-icon.png" alt=""/></span>		
 				<ul class="nav1">
 					<span><a href="index.html" class="house"> </a></span>
-					<li><a href="index.html">NEWS</a></li>
-					<li><a href="about.html">ABOUT</a></li>
-					<li><a href="blog.html">BLOG</a></li>
-					<li><a href="contact.html" >CONTACT</a></li>
+					<li><a href="/">新闻</a></li>
+					<li><a href="about.html">关于我</a></li>
+					<li><a href="blog.html">博客</a></li>
+					<li><a href="contact.html" >联系</a></li>
 				</ul>
 				<!-- script-for-menu -->
 				 <script>
@@ -76,86 +44,86 @@
 	<!--//header-->
 	<div class="portfolio-filter">
 		<div class="container">
-			<h3>OUR NEW COLLECTIONS</h3>
+			<h3>照片素材</h3>
 			<div class="product">		
 				<ul id="filters">
-					<li><span class="filter active" data-filter="app card icon web">ALL</span></li>
-					<li><span class="filter" data-filter="app">Dresses</span></li>
-					<li><span class="filter" data-filter="card">Shorts & Jeans</span></li>
-					<li><span class="filter" data-filter="icon">Tops</span></li>
-					<li><span class="filter" data-filter="web">Outerwear</span></li>
+					<li><span class="filter active" data-filter="app card icon web">所有</span></li>
+					<li><span class="filter" data-filter="app">礼服</span></li>
+					<li><span class="filter" data-filter="card">简约</span></li>
+					<li><span class="filter" data-filter="icon">时尚</span></li>
+					<li><span class="filter" data-filter="web">百搭</span></li>
 				</ul>
 				<div id="portfoliolist">
 					<div class="portfolio icon mix_all" data-cat="icon" style="display: inline-block; opacity: 1;">
 						<div class="portfolio-wrapper">
-							<a href="images/img18.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
-								<img src="images/img18.jpg" alt="" class="img-responsive zoom-img"/>
+							<a href="/static/images/img18.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
+								<img src="/static/images/img18.jpg" alt="" class="img-responsive zoom-img"/>
 							</a>
 						</div>	
 					</div>				
 					<div class="portfolio app mix_all" data-cat="app" style="display: inline-block; opacity: 1;">
-						<a href="images/img19.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
-							<img src="images/img19.jpg" alt="" class="img-responsive zoom-img"/>
+						<a href="/static/images/img19.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
+							<img src="/static/images/img19.jpg" alt="" class="img-responsive zoom-img"/>
 						</a>
 					</div>		
 					<div class="portfolio card mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
-						<a href="images/img20.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
-							<img src="images/img20.jpg" alt="" class="img-responsive zoom-img"/>
+						<a href="/static/images/img20.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
+							<img src="/static/images/img20.jpg" alt="" class="img-responsive zoom-img"/>
 						</a>
 					</div>	
 					<div class="portfolio web mix_all" data-cat="web" style="display: inline-block; opacity: 1;">
-						<a href="images/img21.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
-							<img src="images/img21.jpg" alt="" class="img-responsive zoom-img"/>
+						<a href="/static/images/img21.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
+							<img src="/static/images/img21.jpg" alt="" class="img-responsive zoom-img"/>
 						</a>
 					</div>					
 					<div class="portfolio icon mix_all" data-cat="icon" style="display: inline-block; opacity: 1;">
 						<div class="portfolio-wrapper">
-							<a href="images/img22.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
-								<img src="images/img22.jpg" alt="" class="img-responsive zoom-img"/>
+							<a href="/static/images/img22.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
+								<img src="/static/images/img22.jpg" alt="" class="img-responsive zoom-img"/>
 							</a>
 						</div>	
 					</div>				
 					<div class="portfolio app mix_all" data-cat="app" style="display: inline-block; opacity: 1;">
-						<a href="images/img23.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
-							<img src="images/img23.jpg" alt="" class="img-responsive zoom-img"/>
+						<a href="/static/images/img23.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
+							<img src="/static/images/img23.jpg" alt="" class="img-responsive zoom-img"/>
 						</a>
 					</div>		
 					<div class="portfolio card mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
-						<a href="images/img24.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
-							<img src="images/img24.jpg" alt="" class="img-responsive zoom-img"/>
+						<a href="/static/images/img24.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
+							<img src="/static/images/img24.jpg" alt="" class="img-responsive zoom-img"/>
 						</a>
 					</div>	
 					<div class="portfolio web mix_all" data-cat="web" style="display: inline-block; opacity: 1;">
-						<a href="images/img25.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
-							<img src="images/img25.jpg" alt="" class="img-responsive zoom-img"/>
+						<a href="/static/images/img25.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
+							<img src="/static/images/img25.jpg" alt="" class="img-responsive zoom-img"/>
 						</a>
 					</div>
 					<div class="portfolio icon mix_all" data-cat="icon" style="display: inline-block; opacity: 1;">
 						<div class="portfolio-wrapper">
-							<a href="images/img26.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
-								<img src="images/img26.jpg" alt="" class="img-responsive zoom-img"/>
+							<a href="/static/images/img26.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
+								<img src="/static/images/img26.jpg" alt="" class="img-responsive zoom-img"/>
 							</a>
 						</div>	
 					</div>				
 					<div class="portfolio app mix_all" data-cat="app" style="display: inline-block; opacity: 1;">
-						<a href="images/img27.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
-							<img src="images/img27.jpg" alt="" class="img-responsive zoom-img"/>
+						<a href="/static/images/img27.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
+							<img src="/static/images/img27.jpg" alt="" class="img-responsive zoom-img"/>
 						</a>
 					</div>		
 					<div class="portfolio card mix_all" data-cat="card" style="display: inline-block; opacity: 1;">
-						<a href="images/img28.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
-							<img src="images/img29.jpg" alt="" class="img-responsive zoom-img"/>
+						<a href="/static/images/img28.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
+							<img src="/static/images/img29.jpg" alt="" class="img-responsive zoom-img"/>
 						</a>
 					</div>	
 					<div class="portfolio web mix_all" data-cat="web" style="display: inline-block; opacity: 1;">
-						<a href="images/img29.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
-							<img src="images/img28.jpg" alt="" class="img-responsive zoom-img"/>
+						<a href="/static/images/img29.jpg" class=" mask b-link-stripe b-animate-go   swipebox"  title="Image Title">
+							<img src="/static/images/img28.jpg" alt="" class="img-responsive zoom-img"/>
 						</a>
 					</div>		
 					<div class="clearfix"> </div>
 				</div>	
 				<!-- Script for gallery Here -->
-				<script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
+				<script type="text/javascript" src="/static/js/jquery.mixitup.min.js"></script>
 					<script type="text/javascript">
 					$(function () {
 						
@@ -199,7 +167,7 @@
 				<!-- Gallery Script Ends -->
 			<!--swipebox -->	
 			<link rel="stylesheet" href="css/swipebox.css">
-				<script src="js/jquery.swipebox.min.js"></script> 
+				<script src="/static/js/jquery.swipebox.min.js"></script> 
 				<script type="text/javascript">
 					jQuery(function($) {
 						$(".swipebox").swipebox();
@@ -214,10 +182,10 @@
 		<div class="container">
 			<div class="col-md-4 footer-nav">
 				<ul>
-					<li><a href="index.html">Home</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="blog.html">Blog</a></li>
-					<li><a href="contact.html">Contact</a></li>
+					<li><a href="/" class="active">新闻</a></li>
+					<li><a href="about.html">关于我</a></li>
+					<li><a href="blog.html">博客</a></li>
+					<li><a href="contact.html" >联系</a></li>
 				</ul>
 			</div>
 			<div class="col-md-4 social-icons">
@@ -229,11 +197,38 @@
 				</ul>	
 			</div>
 			<div class="col-md-4 copy-right">
-				<p>Copyright &copy; 2015.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+				<p>Copyright &copy; 2016.侯维月 <a href="http://www.cnblogs.com/vipzhou" target="_blank" title="博客园">开发者博客园</a> - 模板来自 <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">模板之家</a></p>
 			</div>
 			<div class="clearfix"> </div>
 		</div>
 	</div>
+	<!-- js -->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/modernizr.js"></script>
+<!-- //js -->	
+<!-- start-smoth-scrolling-->
+<script type="text/javascript" src="/static/js/move-top.js"></script>
+<script type="text/javascript" src="/static/js/easing.js"></script>	
+<script type="text/javascript" src="/static/js/modernizr.custom.53451.js"></script>
+<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+			});
+		});
+</script>
+<!--//end-smoth-scrolling-->
+<script src="/static/js/easyResponsiveTabs.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$('#horizontalTab').easyResponsiveTabs({
+					type: 'default', //Types: default, vertical, accordion           
+					width: 'auto', //auto or any width like 600px
+					fit: true   // 100% fit in a container
+				});
+			});
+</script>
 	<!--//footer-->
 	<!--smooth-scrolling-of-move-up-->
 		<script type="text/javascript">

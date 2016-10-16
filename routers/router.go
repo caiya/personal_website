@@ -80,4 +80,8 @@ func init() {
 
 	//前台begin
 	beego.Router("/", &controllers.IndexController{}, "*:Index")
+	beego.Router("/gallery", &controllers.GalleryController{}, "*:Index")
+	beego.Router("/about", &controllers.AboutController{}, "*:Index")
+	beego.Router("/blog", &controllers.BlogController{}, "*:Index")
+	beego.Router("/contact", &controllers.ContactController{}, "*:Index")
 }
