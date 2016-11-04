@@ -1,14 +1,12 @@
 // blog
 package controllers
 
-import (
-	"github.com/astaxie/beego"
-)
-
 type BlogController struct {
-	beego.Controller
+	BaseHandle
 }
 
 func (this *BlogController) Index() {
-	this.TplName = "blog.html"
+	renderDatas := make([]string, 0)
+	datas := append(renderDatas, "title_博客")
+	this.RenderHtml("layout.html", "blog.html", datas)
 }

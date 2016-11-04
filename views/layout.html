@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{.title}}</title>
+<link href="/static/css/style.css" type="text/css" rel="stylesheet" media="all">
+<link href="/static/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //Custom Theme files -->
+<!-- js -->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/modernizr.js"></script>
+<!-- //js -->	
+<!-- start-smoth-scrolling-->
+<script type="text/javascript" src="/static/js/move-top.js"></script>
+<script type="text/javascript" src="/static/js/easing.js"></script>
+<script type="text/javascript" src="/static/js/modernizr.custom.53451.js"></script>
+<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+			});
+		});
+</script>
+<!--//end-smoth-scrolling-->
+</head>
+<body>
+	<!--header-->
+	<div class="header">
+		<div class="container">
+			<div class="header-logo">
+				<h1><a href="index.html">Showy</a></h1>
+			</div>
+			<div class="top-nav">
+				<span class="menu"><img src="/static/images/menu-icon.png" alt=""/></span>
+				<ul class="nav1">
+					<span><a href="/" class="house"> </a></span>
+					<li><a href="/" {{if eq .title "新闻"}}class="active"{{end}}>新闻</a></li>
+					<li><a href="/blog" {{if eq .title "博客"}}class="active"{{end}}>博客</a></li>
+					<li><a href="/about" {{if eq .title "关于我"}}class="active"{{end}}>关于我</a></li>
+					<li><a href="/contact" {{if eq .title "联系"}}class="active"{{end}}>联系</a></li>
+				</ul>
+				<!-- script-for-menu -->
+				 <script>
+				   $( "span.menu" ).click(function() {
+					 $( "ul.nav1" ).slideToggle( 300, function() {
+					 // Animation complete.
+					  });
+					 });
+				</script>
+				<!-- /script-for-menu -->
+			</div>	
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	
+	{{.LayoutContent}}
+
+	<!--footer-->
+	<div class="footer">
+		<div class="container">
+			<div class="col-md-4 footer-nav">
+				<ul>
+					<li><a href="/">首页</a></li>
+					<li><a href="/about" class="active">关于我</a></li>
+					<li><a href="/blog">博客</a></li>
+					<li><a href="/contact" >联系</a></li>
+				</ul>
+			</div>
+			<div class="col-md-4 social-icons">
+				<ul>
+					<li><a href="#"> </a></li>
+					<li><a href="#" class="fb"> </a></li>
+					<li><a href="#" class="pt"> </a></li>
+					<li><a href="#" class="gg"> </a></li>
+				</ul>
+			</div>
+			<div class="col-md-4 copy-right">
+				<p>Copyright &copy; 2016.侯维月 <a href="http://www.cnblogs.com/vipzhou" target="_blank" title="博客园">开发者博客园</a> - 模板来自 <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">模板之家</a></p>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+	<!--//footer-->
+	<!--smooth-scrolling-of-move-up-->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				/*
+				var defaults = {
+					containerID: 'toTop', // fading element id
+					containerHoverID: 'toTopHover', // fading element hover id
+					scrollSpeed: 1200,
+					easingType: 'linear' 
+				};
+				*/
+				
+				$().UItoTop({ easingType: 'easeOutQuart' });
+				
+			});
+		</script>
+		<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	<!--//smooth-scrolling-of-move-up-->	
+</body>
+</html>

@@ -28,6 +28,8 @@ func (this *BaseHandle) Prepare() {
 	u := this.GetSession("currUser")
 	controller, _ := this.GetControllerAndAction()
 
+	fmt.Println(controller)
+
 	//读取配置文件
 	if len(CONFIG) == 0 {
 		cfg, _ := ini.Load("./conf/config.ini")
@@ -37,7 +39,7 @@ func (this *BaseHandle) Prepare() {
 	var flag = false
 	if u == nil { //如果用户未登录并且访问非白名单
 		for _, v := range CONFIG {
-			if v == controller { //在白名单，直接退出循环
+			if v == controller || strings.Contains(controller, "Controller") { //在白名单，直接退出循环
 				flag = true
 				break
 			}
@@ -56,6 +58,17 @@ func (this *BaseHandle) RspTemp(layout string, tplname string, class string) {
 	if class != "" {
 		this.Data[class] = "cur"
 	}
+	this.Layout = layout
+	this.TplName = tplname
+}
+
+//前台模板页输出
+func (this *BaseHandle) RenderHtml(layout string, tplname string, objstr []string) {
+	for _, value := range objstr {
+		v := strings.Split(value, "_")
+		this.Data[v[0]] = v[1]
+	}
+	fmt.Println(objstr)
 	this.Layout = layout
 	this.TplName = tplname
 }

@@ -3,14 +3,12 @@
 */
 package controllers
 
-import (
-	"github.com/astaxie/beego"
-)
-
 type IndexController struct {
-	beego.Controller
+	BaseHandle
 }
 
 func (this *IndexController) Index() {
-	this.TplName = "index.html"
+	renderDatas := make([]string, 0)
+	datas := append(renderDatas, "title_新闻")
+	this.RenderHtml("layout.html", "index.html", datas)
 }

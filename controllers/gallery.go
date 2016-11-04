@@ -1,14 +1,11 @@
 package controllers
 
-import (
-	"github.com/astaxie/beego"
-)
-
 type GalleryController struct {
-	beego.Controller
+	BaseHandle
 }
 
 func (this *GalleryController) Index() {
-
-	this.TplName = "gallery.html"
+	renderDatas := make([]string, 0)
+	datas := append(renderDatas, "title_相册")
+	this.RenderHtml("layout.html", "gallery.html", datas)
 }

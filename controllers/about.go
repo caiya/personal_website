@@ -1,14 +1,12 @@
 // about
 package controllers
 
-import (
-	"github.com/astaxie/beego"
-)
-
 type AboutController struct {
-	beego.Controller
+	BaseHandle
 }
 
 func (this *AboutController) Index() {
-	this.TplName = "about.html"
+	renderDatas := make([]string, 0)
+	datas := append(renderDatas, "title_关于我")
+	this.RenderHtml("layout.html", "about.html", datas)
 }
