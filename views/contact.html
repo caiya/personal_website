@@ -30,21 +30,9 @@
         </div>
         <div class="contact-infom">
             <h4>关于站点 :</h4>
-			<script src="/static/js/markdown-browser-0.6/markdown.js"></script>
             <div id="text-input">
-            	{{.temp}}
+            	{{.temp | ToHtmlFromMarkdown}}
             </div>
-			<script>
-		      function Editor(input, preview) {
-		        this.update = function () {
-		          preview.innerHTML = markdown.toHTML(input.html);
-		        };
-		        input.editor = this;
-		        this.update();
-		      }
-		      var $ = function (id) { return document.getElementById(id); };
-		      new Editor($("#text-input"), $("#text-input"));
-		    </script>
         </div>
         <div class="contact-form">
             <h4>联系</h4>

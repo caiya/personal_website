@@ -3,9 +3,6 @@ package controllers
 
 import (
 	"personal_website/models"
-
-	"github.com/microcosm-cc/bluemonday"
-	"github.com/russross/blackfriday"
 )
 
 type ContactController struct {
@@ -22,9 +19,8 @@ func (this *ContactController) Index() {
 	} else {
 		s = temp.Content
 	}
-	unsafe := blackfriday.MarkdownCommon([]byte(s))
-	html := bluemonday.UGCPolicy().SanitizeBytes(unsafe)
-	this.Data["temp"] = unsafe
+
+	this.Data["temp"] = s
 	renderDatas := make([]string, 0)
 	datas := append(renderDatas, "title_联系")
 	this.RenderHtml("layout.html", "contact.html", datas)
