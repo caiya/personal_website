@@ -6,6 +6,6 @@ type GalleryController struct {
 
 func (this *GalleryController) Index() {
 	renderDatas := make([]string, 0)
-	datas := append(renderDatas, "title_相册")
+	datas := append(renderDatas, "title_首页")
 	this.RenderHtml("layout.html", "gallery.html", datas)
 }
