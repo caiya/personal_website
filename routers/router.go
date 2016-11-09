@@ -83,5 +83,6 @@ func init() {
 	beego.Router("/gallery", &controllers.GalleryController{}, "*:Index")
 	beego.Router("/about", &controllers.AboutController{}, "*:Index")
 	beego.Router("/blog", &controllers.BlogController{}, "*:Index")
-	beego.Router("/contact", &controllers.ContactController{}, "*:Index")
+	beego.Router("/contact", &controllers.ContactController{}, "GET:Index")
+	beego.Router("/contact", &controllers.ContactController{}, "POST:Contact")
 }

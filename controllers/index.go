@@ -9,6 +9,6 @@ type IndexController struct {
 
 func (this *IndexController) Index() {
 	renderDatas := make([]string, 0)
-	datas := append(renderDatas, "title_新闻")
+	datas := append(renderDatas, "title_首页")
 	this.RenderHtml("layout.html", "index.html", datas)
 }
